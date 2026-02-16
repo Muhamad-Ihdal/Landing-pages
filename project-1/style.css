@@ -144,6 +144,9 @@ main .content .main-content a{
     border-radius: 7px;
     width: 300px;
     height: 380px;
+box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.39);
+-webkit-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.39);
+-moz-box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.39);
 }
 
 main .content .main-content a .gambar{ /*img*/
