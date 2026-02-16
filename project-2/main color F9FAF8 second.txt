@@ -1,0 +1,9 @@
+main color : #F9FAF8
+second color : #3882f6
+hero and foter color: #1F2937
+quots bacground color: #e5e7eb
+quots text color : #1f2937
+#d3d3d3
+
+https://raw.githubusercontent.com/TheOdinProject/curriculum/81a5d553f4073e593d23a6ab00d50eef8620796d/foundations/html_css/project/imgs/01.png
+https://raw.githubusercontent.com/TheOdinProject/curriculum/02f3babb44a3d30dccdf6ca30283ac64ec02abbd/foundations/html_css/flexbox/project-landing-page/imgs/02.png
