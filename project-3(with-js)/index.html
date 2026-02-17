@@ -4,14 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>web-1</title>
-    <!-- <style>
-        .dark{
-            color: white;
-            background-color: rgb(0, 0, 0) ;
+    <style>
+        .done{
+            text-decoration: line-through;
+            opacity: 0.6;
         }
-    </style> -->
+    </style>
 </head>
+
 <body>
-    
+    <h1>todo list</h1>
+    <input type="text" id="input" placeholder="masukan todo baru!">
+    <button id="btnAdd">Add</button>
+    <ul>
+    </ul>
+
+
+    <script >
+        let input = document.querySelector("#input") 
+let btnAdd = document.querySelector("#btnAdd")
+let ul = document.querySelector("ul")
+
+
+btnAdd.addEventListener("click",() => {
+    if (input.value.trim() === ""){
+        alert("Inputan tidak boleh kosong!")
+    }else{
+        ul.innerHTML += `<li>${input.value.trim()}</li>`;
+        input.value = "";
+    }
+})
+
+ul.addEventListener('click',(e) => {
+    if (e.target.tagName === 'LI'){
+    e.target.classList.add("done")
+    }
+    console.log(ul)
+})
+    </script>
 </body>
 </html>
