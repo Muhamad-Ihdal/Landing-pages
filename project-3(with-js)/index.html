@@ -37,7 +37,7 @@ btnAdd.addEventListener("click",() => {
 
 ul.addEventListener('click',(e) => {
     if (e.target.tagName === 'LI'){
-    e.target.classList.add("done")
+    e.target.classList.toggle("done")
     }
     console.log(ul)
 })
