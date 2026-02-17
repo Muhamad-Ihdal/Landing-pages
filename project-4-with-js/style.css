@@ -4,3 +4,35 @@
     list-style: none;
 }
 
+.card-container{
+    /* height: 100vh; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    padding: 2rem;
+    width: 100%;
+    background-color: #dcdcdc;
+    min-height: 100vh;
+}
+
+.card-container > div{
+    position: relative;
+    background-color: #fff;
+    width: 20rem;
+    height: 20rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    /* overflow: ;/ */
+box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+}
+
+
+
+.card-container button{
+    position: absolute;
+    right: 1rem;
+    bottom:1rem;
+}
+
