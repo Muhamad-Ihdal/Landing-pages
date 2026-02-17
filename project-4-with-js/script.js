@@ -12,7 +12,11 @@ btnAdd.addEventListener("click", function(){
 
     const note = document.createElement("p")
     note.textContent = inputNote.value
-    
+
+    note.addEventListener("click",() => {
+        note.classList.toggle("done")
+    })
+
     const btnRmv = document.createElement("button")
     btnRmv.textContent = "Hapus"
     
