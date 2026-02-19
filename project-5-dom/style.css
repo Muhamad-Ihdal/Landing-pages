@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: roboto;
+}
+
+body{
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container{
+    background-color: rgb(110, 26, 189);
+    border-radius: 10px;
+    padding: 30px;
+
+    width: 400px;
+}
+
+.judul{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.my-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.my-form input{
+    width: 275px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+
+}
+
+.my-form button{
+    border-radius: 8px;
+    height: 40px;
+    border: none;
+
+}
+
+.container-todos{
+    margin-top: 10px;
+    height: 400px;
+    overflow: auto;
+}
+
+.todo{
+    padding: 10px 15px;
+    justify-content: space-between;
+    border-radius: 8px;
+    display: flex;
+    color: black;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.todo button{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 156, 94);
+}
+
+.remove-all-container{
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center;
+}
+
+.remove-all{
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+}

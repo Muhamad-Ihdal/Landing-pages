@@ -1,0 +1,5 @@
+1️⃣ Event object
+2️⃣ Keydown (Enter untuk submit)
+3️⃣ Event delegation
+4️⃣ LocalStorage
+5️⃣ Baru lanjut ke topik JS lebih dalam (array, object, modular code)

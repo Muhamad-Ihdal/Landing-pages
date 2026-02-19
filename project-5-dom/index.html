@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-dom-1</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- font end -->
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="judul">Todo list</h1>
+        
+        <form class="my-form" action="" id="myForm">
+          <input type="text" id="inputTodo" placeholder="input text todo list!">
+          <button id="btnAdd">Tambah</button>
+        </form>
+
+        <div id="containerTodo" class="container-todos"></div>
+
+        <div class="remove-all-container">
+            <button id="removeAll" class="remove-all">Hapus semua</button>
+        </div>
+    </div>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>

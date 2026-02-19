@@ -1,0 +1,206 @@
+html:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-dom-1</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- font end -->
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="judul">Todo list</h1>
+        
+        <!-- <form class="my-form" action="" id="myForm"> -->
+          <input type="text" id="inputTodo" placeholder="input text todo list!">
+          <button id="btnAdd">Tambah</button>
+        <!-- </form> -->
+
+        <div id="containerTodo" class="container-todos">
+           <!-- <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div>
+           <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div>
+           <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div>
+           <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div>
+           <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div>
+           <div class="todo">
+                <p>todo-dom-1</p>
+                <button>Hapus</button>
+           </div> -->
+        </div>
+
+        <div class="remove-all-container">
+            <button id="removeAll" class="remove-all">Hapus semua</button>
+        </div>
+    </div>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+css:
+*{
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: roboto;
+}
+
+body{
+    color: white;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container{
+    background-color: rgb(110, 26, 189);
+    border-radius: 10px;
+    padding: 30px;
+
+    width: 400px;
+}
+
+.judul{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+
+.my-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.my-form input{
+    width: 275px;
+    height: 40px;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+
+}
+
+.my-form button{
+    border-radius: 8px;
+    height: 40px;
+    border: none;
+
+}
+
+.container-todos{
+    margin-top: 10px;
+    height: 400px;
+    overflow: auto;
+}
+
+.todo{
+    padding: 10px 15px;
+    justify-content: space-between;
+    border-radius: 8px;
+    display: flex;
+    color: black;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.todo button{
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(255, 156, 94);
+}
+
+.remove-all-container{
+    /* background-color: antiquewhite; */
+    display: flex;
+    justify-content: center;
+}
+
+.remove-all{
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+}
+
+js:
+// let form = document.querySelector("#myForm")
+let inputTodo = document.querySelector("#inputTodo")
+let btnAdd = document.querySelector("#btnAdd")
+let containerTodo = document.querySelector("#cotainerTodo")
+
+
+btnAdd.addEventListener('click',addTodo())
+// form.addEventListener('submit',addTodo())
+
+
+function addTodo(){
+    if (inputTodo.value.trim() === ''){
+    alert("form input tidak boleh kosong!!!")
+    return
+    }
+
+    // event.preventDefault();
+    
+    let todoDiv = createTodoDiv()
+    let text = createText()
+    let btnRmv = createBtnRmv()
+
+    btnRmv.addEventListener('click',() =>{
+        todoDiv.remove()
+    })
+
+    todoDiv.appendChild(text)
+    todoDiv.appendChild(btnRmv)
+    containerTodo.appendChild(todoDiv)
+
+    inputTodo.value = ''
+    alert('berhasil')
+}
+
+function createTodoDiv(){
+    let todoDiv = document.createElement("div")
+    todoDiv.setAttribute('class','todo')
+    return todoDiv
+}
+
+function createText(){
+    let text = document.createElement("p")
+    text.textContent = inputTodo.ariaValueMax.trim() 
+    return text
+}
+function createBtnRmv(){
+    let btnRmv = document.createElement("button")
+    btnRmv.textContent = 'Hapus' 
+    return btnRmv
+}
+
+
+
