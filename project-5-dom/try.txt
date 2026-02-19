@@ -1,3 +1,4 @@
+
 html:
 <!DOCTYPE html>
 <html lang="en">
@@ -18,37 +19,12 @@ html:
     <div class="container">
         <h1 class="judul">Todo list</h1>
         
-        <!-- <form class="my-form" action="" id="myForm"> -->
+        <form class="my-form" action="" id="myForm">
           <input type="text" id="inputTodo" placeholder="input text todo list!">
           <button id="btnAdd">Tambah</button>
-        <!-- </form> -->
+        </form>
 
-        <div id="containerTodo" class="container-todos">
-           <!-- <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div>
-           <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div>
-           <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div>
-           <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div>
-           <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div>
-           <div class="todo">
-                <p>todo-dom-1</p>
-                <button>Hapus</button>
-           </div> -->
-        </div>
+        <div id="containerTodo" class="container-todos"></div>
 
         <div class="remove-all-container">
             <button id="removeAll" class="remove-all">Hapus semua</button>
@@ -60,6 +36,7 @@ html:
     <script src="script.js"></script>
 </body>
 </html>
+
 
 css:
 *{
@@ -150,24 +127,23 @@ body{
     color: white;
 }
 
+
 js:
-// let form = document.querySelector("#myForm")
 let inputTodo = document.querySelector("#inputTodo")
 let btnAdd = document.querySelector("#btnAdd")
-let containerTodo = document.querySelector("#cotainerTodo")
+let containerTodo = document.querySelector("#containerTodo")
+let removeAll = document.querySelector("#removeAll")
 
+btnAdd.addEventListener('click',addTodo)
+removeAll.addEventListener('click',removeAllTodo)
 
-btnAdd.addEventListener('click',addTodo())
-// form.addEventListener('submit',addTodo())
-
-
-function addTodo(){
+function addTodo(event){
     if (inputTodo.value.trim() === ''){
     alert("form input tidak boleh kosong!!!")
     return
     }
 
-    // event.preventDefault();
+    event.preventDefault();
     
     let todoDiv = createTodoDiv()
     let text = createText()
@@ -182,7 +158,6 @@ function addTodo(){
     containerTodo.appendChild(todoDiv)
 
     inputTodo.value = ''
-    alert('berhasil')
 }
 
 function createTodoDiv(){
@@ -193,7 +168,7 @@ function createTodoDiv(){
 
 function createText(){
     let text = document.createElement("p")
-    text.textContent = inputTodo.ariaValueMax.trim() 
+    text.textContent = inputTodo.value.trim() 
     return text
 }
 function createBtnRmv(){
@@ -204,3 +179,16 @@ function createBtnRmv(){
 
 
 
+function removeAllTodo(){
+    let todos = document.querySelectorAll('.todo')
+    if (todos.length === 0){
+        alert("tidak ada todo")
+        return
+    }
+
+    todos.forEach(function(todo){
+        containerTodo.removeChild(todo)
+    } 
+    
+)
+}

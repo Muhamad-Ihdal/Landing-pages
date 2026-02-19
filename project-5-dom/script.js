@@ -4,7 +4,7 @@ let containerTodo = document.querySelector("#containerTodo")
 let removeAll = document.querySelector("#removeAll")
 
 btnAdd.addEventListener('click',addTodo)
-removeAll.addEventListener('click',removeAllTodo)
+removeAll.addEventListener('click',() => containerTodo.innerHTML = '')
 
 function addTodo(event){
     if (inputTodo.value.trim() === ''){
@@ -48,16 +48,3 @@ function createBtnRmv(){
 
 
 
-function removeAllTodo(){
-    let todos = document.querySelectorAll('.todo')
-    if (todos.length === 0){
-        alert("tidak ada todo")
-        return
-    }
-
-    todos.forEach(function(todo){
-        containerTodo.removeChild(todo)
-    } 
-    
-)
-}
