@@ -4,8 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- font end -->
+
+
 </head>
 <body>
-    
+    <div class="container">
+        <h2>Todo List <img src="https://cdn-icons-png.flaticon.com/512/10503/10503202.png" alt="todo-icon"></h2>
+        <div class="input">
+            <input type="text" placeholder="Input your text...!" class="todo-input" id="todoInput">
+            <button class="btn-add" id="btnAdd">Add</button>
+        </div>
+        <div class="todo-container" id="todoContainer">
+            <!-- <div class="todo">
+                <input type="checkbox">
+                <p>Text todo 1</p>
+                <button>Hapus</button>
+            </div> -->
+        </div>
+        <div class="cotainer-remove-all">
+            <button class="remove-all" id="btnRemoveAll">Remove All</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
 </body>
 </html>
