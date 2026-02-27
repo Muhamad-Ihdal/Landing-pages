@@ -21,6 +21,9 @@ function addTodo(event){
     btnRmv.addEventListener('click',() =>{
         todoDiv.remove()
     })
+    todoDiv.addEventListener('click',() =>{
+        text.classList.toggle('done')
+    })
 
     todoDiv.appendChild(text)
     todoDiv.appendChild(btnRmv)
@@ -37,7 +40,7 @@ function createTodoDiv(){
 
 function createText(){
     let text = document.createElement("p")
-    text.textContent = inputTodo.value.trim() 
+    text.textContent = inputTodo.value.trim()
     return text
 }
 function createBtnRmv(){
