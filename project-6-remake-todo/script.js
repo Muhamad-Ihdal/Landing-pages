@@ -5,9 +5,9 @@ let btnRmvAll = document.querySelector("#btnRemoveAll")
 
 btnRmvAll.addEventListener("click",() => todoContainer.innerHTML = "")
 
-btnAdd.addEventListener('click',function(){
+btnAdd.addEventListener('click',function(event){
+    event.preventDefault();
     if (todoInput.value.trim() === ''){
-        alert("input tidak boleh kosong")
         return
     }
 
@@ -15,14 +15,6 @@ btnAdd.addEventListener('click',function(){
     let checkbox = createCheckbox()
     let textTodo = createText()
     let btnRmv = createBtnRmv()
-
-    checkbox.addEventListener('change',() => {
-        textTodo.classList.toggle("done")
-    })
-
-    btnRmv.addEventListener("click", () => {
-        todoDiv.remove()
-    })
 
     todoDiv.appendChild(checkbox)
     todoDiv.appendChild(textTodo)
@@ -34,15 +26,47 @@ btnAdd.addEventListener('click',function(){
 })
 
 
+todoContainer.addEventListener("click",(e)=>{
+    if (e.target.matches(".btn-rmv")){
+        let todo = e.target.closest(".todo")
+        todo.remove()
+        return
+    }
+    let todo = e.target.closest(".todo")
+    coretTodo(todo)
+
+
+})
+
+todoContainer.addEventListener("change",(e)=>{
+    let todo = e.target.closest(".todo")
+    coretTodo(todo)
+})
+
+
+
+function coretTodo(todo){
+    let text = todo.querySelector('p')
+    let checkbox = todo.querySelector("input")
+    
+    if (checkbox.checked){
+        checkbox.checked = false
+    }
+    else{
+        checkbox.checked = true
+    }
+    return text.classList.toggle("done",checkbox.checked)
+}
+
 function createTodoDiv(){
     let todo = document.createElement("div")
-    todo.setAttribute("class","todo")
+    todo.classList.add("todo")
     return todo
 }
 
 function createCheckbox(){
     let checkbox = document.createElement("input")
-    checkbox.setAttribute("type","checkbox")
+    checkbox.type = "checkbox"
     return checkbox
 }
 
@@ -55,5 +79,9 @@ function createText(){
 function createBtnRmv(){
     let btnRmv = document.createElement("button")
     btnRmv.textContent = "Hapus"
+    btnRmv.classList.add("btn-rmv")
     return btnRmv
 }
+
+
+
