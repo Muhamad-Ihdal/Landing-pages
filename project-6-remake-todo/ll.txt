@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo-1-remake</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- font end -->
+
+
+</head>
+<body>
+    <div class="container">
+        <h2>Todo List <img src="https://cdn-icons-png.flaticon.com/512/10503/10503202.png" alt="todo-icon"></h2>
+        <form class="input" action="" >
+            <input type="text" placeholder="Input your text...!" class="todo-input" id="todoInput">
+            <button class="btn-add" id="btnAdd">Add</button>
+        </form>
+        <div class="todo-container" id="todoContainer">
+            <!-- <div class="todo">
+                <input type="checkbox">
+                <p>Text todo 1</p>
+                <button>Hapus</button>
+            </div> -->
+        </div>
+        <div class="cotainer-remove-all">
+            <button class="remove-all" id="btnRemoveAll">Remove All</button>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+css:
+*{
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "roboto",sans-serif;
+}
+
+body{
+    color:white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    background-color: rebeccapurple;
+    width: 30rem;
+    min-height: 20rem;
+    padding :2rem;
+    border-radius: 10px;
+    margin: 3rem 0;
+
+}
+
+h2{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    height: 3rem;
+    padding: 2.5rem 0;
+    font-size: 30px;
+}
+h2 img{
+    width: 30px;
+    margin-left: 0.3rem;
+}
+
+
+.input{
+    background-color: rgb(235, 235, 235);
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.todo-input{
+    height: 2.8rem;
+    border-radius: 30px;
+    border:none;
+    flex: 3;
+    background: transparent;
+    outline: none;
+    padding-left: 2rem;
+}
+
+.btn-add{
+    font-size: 18px;
+    font-weight: 700;
+    flex: 1;
+    border:none;
+    outline: none;
+    height: 2.8rem;
+    border-radius: 30px;
+    background-color: rgb(255, 189, 66);
+}
+
+
+.todo-container{
+    min-height: 3rem;
+}
+.todo{
+    background-color: white;
+    color:black;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding:.6rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: .2rem;
+}
+.todo p{
+    flex:4;
+    margin-left: 0.3rem;
+}
+
+.todo .done{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+.todo button{
+    flex: 1;
+    background-color: red;
+    color: white;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    padding :.3rem;
+    border-radius: 5px;
+
+}
+
+.cotainer-remove-all{
+    display: flex;
+    justify-content: center;
+}
+
+.remove-all{
+    color:white;
+    padding:.5rem;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    margin-top: 1rem;
+    background-color: rgb(255, 58, 58);
+}
+
+
+js:
+let todoInput = document.querySelector("#todoInput")
+let btnAdd = document.querySelector("#btnAdd")
+let todoContainer = document.querySelector("#todoContainer")
+let btnRmvAll = document.querySelector("#btnRemoveAll")
+let todos = []
+let unique_id = 1; 
+
+btnRmvAll.addEventListener("click",() => {
+    todoContainer.innerHTML = "";
+    todos = [];
+})
+
+btnAdd.addEventListener('click',function(event){
+    event.preventDefault();
+    if (todoInput.value.trim() === ''){
+        return
+    }
+
+    addTodo(text=todoInput.value.trim())
+    console.log(todos)
+    todoInput.value = ''
+})
+
+
+todoContainer.addEventListener("click",(e)=>{
+    if (e.target.matches(".btn-rmv")){
+        let todo = e.target.closest(".todo")
+        let todoId = Number(todo.dataset.id)
+        removeFromArr(todoId)
+
+        todo.remove()
+        return
+    }
+    
+    if (!e.target.matches("input")){
+        let todo = e.target.closest(".todo")
+        coretTodo(todo)
+    }
+
+
+})
+
+todoContainer.addEventListener("change",(e)=>{
+    if (e.target.type !== "checkbox") return
+    
+    let todo = e.target.closest(".todo")
+    coretTodo(todo)
+})
+
+
+function addTodo(text){
+    let data = {
+        id: unique_id,
+        text:text,
+        completed:false
+    };
+    unique_id++;
+    todos.push(data);
+
+    renderTodo()
+}
+
+function renderTodo(){
+    todoContainer.innerHTML = "";
+
+    todos.forEach((todo) => {
+        let todoDiv = createTodoDiv()
+        let checkbox = createCheckbox()
+        let textTodo = createText(todo.text)
+        let btnRmv = createBtnRmv()
+
+        todoDiv.dataset.id = todo.id
+
+        todoDiv.appendChild(checkbox)
+        todoDiv.appendChild(textTodo)
+        todoDiv.appendChild(btnRmv)
+        todoContainer.appendChild(todoDiv)
+
+        if (todo.completed === true){
+            textTodo.classList.add("done")
+            checkbox.checked = true
+        }
+    })
+
+}
+
+function removeFromArr(id){
+    for (let i in todos){
+        if (todos[i].id === id){
+            delete todos[i]
+        }
+    }
+}
+
+
+console.log
+function coretTodo(todo){
+    // let text = todo.querySelector('p')
+    let checkbox = todo.querySelector("input")
+    let id = Number(todo.dataset.id)
+    
+    // console.log("ini jalan")
+    
+    
+    for (let i in todos){
+
+        if (todos[i].id === id && todos[i].completed === false ){
+            todos[i].completed = true;
+            console.log("consol di ubah jadi true")
+        } else if (todos[i].id === id && todos[i].completed === true ){
+            todos[i].completed = false;
+            console.log("consol di ubah jadi false")
+        }
+
+
+        if (todos[i].completed === true){
+            checkbox.checked = true
+        } else{
+            checkbox.checked = false
+        }
+    }
+
+    renderTodo()
+}
+
+
+
+
+function createTodoDiv(){
+    let todo = document.createElement("div")
+    todo.classList.add("todo")
+    return todo
+}
+
+function createCheckbox(){
+    let checkbox = document.createElement("input")
+    checkbox.type = "checkbox"
+    return checkbox
+}
+
+function createText(text){
+    let textTodo = document.createElement("p")
+    textTodo.textContent = text.trim()
+    return textTodo 
+}
+
+function createBtnRmv(){
+    let btnRmv = document.createElement("button")
+    btnRmv.textContent = "Hapus"
+    btnRmv.classList.add("btn-rmv")
+    return btnRmv
+}
+
+
+
