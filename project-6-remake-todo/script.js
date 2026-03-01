@@ -59,7 +59,7 @@ function addTodo(text){
     renderTodo()
 }
 
-function renderTodo(){
+function renderTodo(){               //  <-------- render ada di sini 
     todoContainer.innerHTML = "";
 
     todos.forEach((todo) => {
@@ -84,39 +84,20 @@ function renderTodo(){
 }
 
 function removeFromArr(id){
-    for (let i in todos){
-        if (todos[i].id === id){
-            delete todos[i]
-        }
-    }
+    todos = todos.filter(todo => todo.id !== id)
+    renderTodo()
 }
 
 
-console.log
-function coretTodo(todo){
-    let checkbox = todo.querySelector("input")
-    let id = Number(todo.dataset.id)
+function coretTodo(todoElement){
+    let checkbox = todoElement.querySelector("input")
+    let id = Number(todoElement.dataset.id)
+
+    let todo = todos.find(todo => todo.id === id)
+    if (!todo) return
+
+    todo.completed = !todo.completed
     
-    
-    
-    for (let i in todos){
-
-        if (todos[i].id === id && todos[i].completed === false ){
-            todos[i].completed = true;
-            console.log("consol di ubah jadi true")
-        } else if (todos[i].id === id && todos[i].completed === true ){
-            todos[i].completed = false;
-            console.log("consol di ubah jadi false")
-        }
-
-
-        if (todos[i].completed === true){
-            checkbox.checked = true
-        } else{
-            checkbox.checked = false
-        }
-    }
-
     renderTodo()
 }
 
