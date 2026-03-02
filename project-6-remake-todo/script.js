@@ -2,12 +2,19 @@ let todoInput = document.querySelector("#todoInput")
 let btnAdd = document.querySelector("#btnAdd")
 let todoContainer = document.querySelector("#todoContainer")
 let btnRmvAll = document.querySelector("#btnRemoveAll")
+let choice = document.querySelectorAll("input[name='sortir']")
 let todos = []
 let unique_id = 1; 
 
 btnRmvAll.addEventListener("click",() => {
     todoContainer.innerHTML = "";
-    todos = [];
+    let radio = document.querySelector("input[name='sortir']:checked");
+
+    if (radio.value === "sudah"){
+        todos = todos.filter(todo => todo.completed === false)
+    } else if (radio.value === "belum"){
+        todos = todos.filter(todo => todo.completed === true)
+    } else {todos = [];}
 })
 
 btnAdd.addEventListener('click',function(event){
@@ -47,6 +54,21 @@ todoContainer.addEventListener("change",(e)=>{
 })
 
 
+choice.forEach((r)=>{
+    r.addEventListener("change", ()=>{
+        renderTodo()
+    })
+})
+
+
+
+
+
+
+
+
+
+
 function addTodo(text){
     let data = {
         id: unique_id,
@@ -59,29 +81,44 @@ function addTodo(text){
     renderTodo()
 }
 
-function renderTodo(){               //  <-------- render ada di sini 
-    todoContainer.innerHTML = "";
 
-    todos.forEach((todo) => {
+function renderTodo(){               
+    todoContainer.innerHTML = "";
+    
+    let radio = document.querySelector("input[name='sortir']:checked");
+    let sortir = radio.value;
+    let data;
+
+    if (sortir === "sudah"){
+        data = todos.filter(d => d.completed === true)
+    } else if (sortir === "belum"){
+        data = todos.filter(d => d.completed === false)
+    } else{
+        data = todos 
+    }
+
+    data.forEach((d) => {
         let todoDiv = createTodoDiv()
         let checkbox = createCheckbox()
-        let textTodo = createText(todo.text)
+        let textTodo = createText(d.text)
         let btnRmv = createBtnRmv()
 
-        todoDiv.dataset.id = todo.id
+        todoDiv.dataset.id = d.id
 
         todoDiv.appendChild(checkbox)
         todoDiv.appendChild(textTodo)
         todoDiv.appendChild(btnRmv)
         todoContainer.appendChild(todoDiv)
 
-        if (todo.completed === true){
+        if (d.completed === true){
             textTodo.classList.add("done")
             checkbox.checked = true
         }
     })
 
 }
+
+
 
 function removeFromArr(id){
     todos = todos.filter(todo => todo.id !== id)
