@@ -8,7 +8,7 @@
 .container{
     margin: auto;
     width: 60rem;
-    background-color: #f6f6f6;
+    /* background-color: #f6f6f6; */
 
 }
 
@@ -35,22 +35,22 @@
     /* padding: 0 ; */
     display: flex;
     justify-content: start;
-    padding-right: 20rem ;
-    margin: 1rem 0;
+    /* padding-right: 20rem ; */
+    margin: .8rem 0;
 }
 
 .search-input{
     outline: none;
     border: none;
     border-radius: 15px;
-    height: 2rem;
+    height: 2.5rem;
     padding: .8rem;
     flex: 8;
     background-color: rgb(226, 226, 226);
 }
 .btn-search{
+    height: 2.5rem;
     border-radius: 15px;
-    height: 2rem;
     outline: none;
     border: none;
     flex: 1;
@@ -63,12 +63,78 @@
 /* ------------- btn-sort */
 .sort{
     display: flex;
-    margin: 1rem 0;
+    margin: .5rem 0;
     gap: .5rem;
 }
 .sort article{
-
     padding: .2rem;
 }
 
 /* ---------- list header */
+
+.list-header{
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.108);
+    padding: .4rem 1rem;
+    height: 2.5rem;
+    
+}
+.list-header p{
+    border-left: 1px solid black;
+    padding-left: 1rem;
+}
+
+.list-header-id{flex: 2;}
+.list-header-name{flex: 6;}
+.list-header-stock{flex: 2;}
+.list-header-action{flex: 4;}
+
+
+/* ------------- list product */
+.container-list{
+    /* height: 100rem; */
+    max-height: 20rem;
+    overflow: auto;
+    /* background-color: red; */
+}
+
+.product{
+    display: flex;
+    align-items: center;
+    background-color: rgba(29, 28, 28, 0.048);
+    padding: .4rem 1rem;
+    height: 2.5rem;
+}
+
+.product *{
+    border-left: 1px solid black;
+    padding-left: 1rem;
+}
+
+.product-id{flex: 2;}
+.product-name{flex: 6;}
+.product-stock{flex: 2;}
+.product-action{flex: 4;}
+
+.product-action button{
+    outline: none;
+    border: none;
+    padding: .3rem;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    width: 2rem;
+    margin: auto .1rem;
+    background-color: rgb(213, 213, 213);
+
+}
+
+
+
+.product-action .delete{
+    width: 8rem;
+    margin-left: .7rem;
+    background-color: red;
+    color: white;
+}
