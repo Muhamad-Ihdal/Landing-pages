@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: "roboto",sans-serif;
+}
+.container{
+    margin: auto;
+    width: 60rem;
+    background-color: #f6f6f6;
+
+}
+
+.header {
+    background-color: #077bbf;
+    color:white;
+    padding: 1rem;
+
+}
+
+.produck-list-area{
+    padding:1rem;
+}
+
+.produck-list-area h2{
+    margin-bottom: .8rem;
+}
+
+
+
+/* -----------search */
+.search{
+    /* background-color: rgb(169, 255, 143); */
+    /* padding: 0 ; */
+    display: flex;
+    justify-content: start;
+    padding-right: 20rem ;
+    margin: 1rem 0;
+}
+
+.search-input{
+    outline: none;
+    border: none;
+    border-radius: 15px;
+    height: 2rem;
+    padding: .8rem;
+    flex: 8;
+    background-color: rgb(226, 226, 226);
+}
+.btn-search{
+    border-radius: 15px;
+    height: 2rem;
+    outline: none;
+    border: none;
+    flex: 1;
+    background-color: #077bbf;
+    color: white;
+    font-weight: 600;
+}
+
+
+/* ------------- btn-sort */
+.sort{
+    display: flex;
+    margin: 1rem 0;
+    gap: .5rem;
+}
+.sort article{
+
+    padding: .2rem;
+}
+
+/* ---------- list header */

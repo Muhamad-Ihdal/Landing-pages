@@ -3,24 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inventory App</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- font end -->
+
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <header class="header">
-            <h1>Inventory Manager</h1>
-            <p>Manage your storage product</p>
-        </header>
+<header class="header">
+    <h1>Inventory Manager</h1>
+    <p>Manage your storage product</p>
+</header>
 
-        <main>
-            <section class="produck-list-area"></section>
-            <section class="add-product-area"></section>
-        </main>
+<main>
+
+    <!-- ----------------------- produck-list-area ---------------------------------------- -->
+    <section class="produck-list-area">
+        <h2>Product List</h2>
+        
+        <form class="search">
+            <input  name="search-input" placeholder="Search Product" id="searchInput" class="search-input">
+            <button id="btnSearch" class="btn-search">Search</button>
+        </form>
+
+        <form class="sort">
+            <article>
+                <input type="radio" name="sort" id="all" checked>
+                <label for="all">All</label>
+            </article>
+                
+            <article>
+                <input type="radio" name="sort" id="lowStock">
+                <label for="lowStock">Low stock</label>
+            </article>
+
+            <article>
+                <input type="radio" name="sort" id="outOfStock">
+                <label for="outOfStock">Out of stock</label>
+            </article>
+        </form>
+        
+        <section id="ProductList" class="product-list">
+            <h3 id="listTitle" class="list-title">All Product</h3>
+
+            <div class="list-header">
+                <p>ID</p>
+                <p>Name</p>
+                <p>Stock</p>
+                <p>Action</p>
+            </div>
+
+            <article class="product">
+                <p id="id" class="id">23</p>
+                <p id="name" class="name">Product Name</p>
+                <p id="stock" class="stock">84</p>
+                <div id="action" class="action">
+                    <button id="increase" class="increase">+</button>
+                    <button id="decrease" class="decrease">-</button>
+                    <button id="delete" class="delete">Delete</button>
+                </div>
+            </article>
+            
+        </section>
+    </section>
+    <!-- ----------------------- produck-list-area End---------------------------------------- -->
+    
 
 
 
-    </div>
+
+    <!-- ----------------------- add-product-area ---------------------------------------- -->
+    <section class="add-product-area">
+        <h2>Add Product</h2>
+        <form action="/iniHarusGwIsiApa" class="add-product">
+            
+            <label for="product-name-input">Product name:</label>
+            <input type="text" name="product-name-input" placeholder="Product Name" required id="productNameInput">
+
+            <label for="stoct-input">stock:</label>
+            <input type="text" name="stoct-input" placeholder="Product Name" id="stockInput" class="stoct-input"> 
+
+            <button class="btn-add-product">Add</button>
+
+        </form>
+    </section>
+    <!-- ----------------------- add-product-area End---------------------------------------- -->
+</main>
+
+<footer>
+    <h2>2026 c footer gw</h2>
+</footer>
+
+
+
+</div>
 
 
     <script src="script.js"></script>
