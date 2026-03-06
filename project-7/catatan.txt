@@ -1,0 +1,9 @@
+1. main produck (produck lis) ---> include search and filter
+2. add new produck  
+
+
+
+
+
+aset:
+- color: Biru abu-abu (#96C2DB, #E5EDF1), putih (#FFFFF)

@@ -63,12 +63,6 @@ choice.forEach((r)=>{
 
 
 
-
-
-
-
-
-
 function addTodo(text){
     let data = {
         id: unique_id,
@@ -117,7 +111,6 @@ function renderTodo(){
     })
 
 }
-
 
 
 function removeFromArr(id){
