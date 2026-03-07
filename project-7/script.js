@@ -92,14 +92,13 @@ function renderData(){
 
 function templateList(product){
     let sort = document.querySelector("input[name='sort']:checked").value
-    console.log("ini hasil dari selector radio: ",sort)
-
+    
     const stockClass = () => {
         if (product.stock === 0) {return "out-of-stock"}
-        else if ( product.stock <= 5 ?? product.stock > 0) return "low-stock" 
+        else if ( product.stock <= 5 && product.stock > 0) return "low-stock" 
         else return ""
     }
-    
+
     let html =`
         <article class="product" >
             <p class="product-id">${product.id}</p>
@@ -113,19 +112,19 @@ function templateList(product){
         </article>`
 
 
-
-    if (sort === "out-of-stock") {
-        if (product.stock === 0){
+    if (sort !== "all"){
+        if (sort === "out-of-stock" && product.stock === 0){
             return html
-        }else {return "";}
-    } else if (sort === "low-stock"){
-        if (product.stock <= 5){
+        } else if (sort === "low-stock" && product.stock <= 5 && product.stock > 0){
             return html
-        } else {return "";}
-    } else{
+        } else {
+            return ""
+        }
+    } else {
         return html
     }
 }
+
 // ----------------------------- Render Data end----------------------
 
 
