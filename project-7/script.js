@@ -5,6 +5,7 @@ let containerList = document.querySelector("#containerList")
 let products;
 loadData()
 console.log(products)
+renderData()
 
 
 
@@ -33,6 +34,7 @@ btnAddProduct.addEventListener("click",(e)=>{
         alert("input must be a positive number")
         return
     }
+
     
     let id;
     do{
@@ -45,6 +47,7 @@ btnAddProduct.addEventListener("click",(e)=>{
         name:productNameInput.value.trim(),
         stock:Number(stockInput.value)
     })
+    renderData()
     saveData()
     
     productNameInput.value = ""
@@ -80,17 +83,17 @@ function renderData(){
 
 function templateList(product){
     const stockClass = () => {
-        if (product.stock === 0) return "out-of-stock"
-        else if (product.stock <= 5) return "low-stock" 
+        if (product.stock === 0) {return "out-of-stock"}
+        else if ( product.stock <= 5 ?? product.stock > 0) return "low-stock" 
         else return ""
     }
 
     return `
-        <article class="product ${stockClass}">
+        <article class="product" >
             <p class="product-id">${product.id}</p>
             <p class="product-name">${product.name}</p>
-            <p class="product-stock">${product.stock}</p>
-            <div class="product-action">
+            <p class="product-stock ${stockClass()}">${product.stock}</p>
+            <div class="product-action" data-id="${product.id}">
                 <button class="increase">+</button>
                 <button class="decrease" ${product.stock === 0 ? "disabled":""}>-</button>
                 <button class="delete">Delete</button>
@@ -99,3 +102,45 @@ function templateList(product){
 }
 // ----------------------------- Render Data end----------------------
 
+
+// ----------------------------- list event ----------------------
+containerList.addEventListener("click",(e)=>{
+    if (e.target.tagName !== "BUTTON") return
+    let id = e.target.closest(".product-action").dataset.id
+    if (e.target.classList.contains("delete")){
+        deleteProduct(id)
+    }else if (e.target.classList.contains("increase")){
+        increaseStock(id)        
+    }else if (e.target.classList.contains("decrease")){
+        decreaseStock(id)
+    }
+})
+
+
+// ----------------------------- list event end----------------------
+
+
+
+// ----------------------------- tambahan ----------------------
+function deleteProduct(id){
+    products = products.filter(p => p.id !== id)
+    saveData()
+    renderData()
+}
+
+function increaseStock(id){
+    let product = products.find(p => p.id === id)
+    product.stock++
+    saveData()
+    renderData()
+}
+
+function decreaseStock(id){
+    let product = products.find(p => p.id === id)
+    if (!product.stock > 0) return
+    product.stock--;
+    
+    saveData()
+    renderData()
+}
+// ----------------------------- tambahan end----------------------

@@ -16,6 +16,9 @@
 button{
     cursor: pointer;
 }
+button:hover{
+    opacity: 0.7;
+}
 
 button:disabled{
     opacity: 0.5;
@@ -116,10 +119,10 @@ button:disabled{
     height: 2.5rem;
 }
 .low-stock{
-    color :yellow;
+    color :rgb(209, 199, 0);
 }
 .out-of-stock{
-    color :red;
+    color :rgb(241, 0, 0);
 }
 
 .product *{
