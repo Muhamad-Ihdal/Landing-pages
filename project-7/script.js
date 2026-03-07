@@ -4,7 +4,6 @@ let btnAddProduct = document.querySelector("#btnAddProduct")
 let containerList = document.querySelector("#containerList")
 let products;
 loadData()
-console.log(products)
 renderData()
 
 
@@ -29,11 +28,19 @@ function loadData(){
 // ----------------------------- Add Product ----------------------
 btnAddProduct.addEventListener("click",(e)=>{
     e.preventDefault();
-    if (!productNameInput.value.trim()) return
+    let productName = productNameInput.value.trim()
+    if (!productName) return
     else if (!stockInput.value.trim() || isNaN(stockInput.value) || Number(stockInput.value) < 0) {
         alert("input must be a positive number")
         return
     }
+    let same = products.find(p => p.name === productName)
+    if (same) {
+        alert("product tersebut telah tersedia!")
+        productNameInput.value = ""
+        stockInput.value = ""
+        return
+    }  
 
     
     let id;
@@ -44,7 +51,7 @@ btnAddProduct.addEventListener("click",(e)=>{
         
     products.push({
         id:id,
-        name:productNameInput.value.trim(),
+        name:productName,
         stock:Number(stockInput.value)
     })
     renderData()
@@ -52,7 +59,6 @@ btnAddProduct.addEventListener("click",(e)=>{
     
     productNameInput.value = ""
     stockInput.value = ""
-    console.log(products)
     })
     
 
@@ -77,18 +83,24 @@ function isIdExits(newId){
 
 
 // ----------------------------- Render Data ----------------------
+let checkbox = document.querySelector("#sort")
+checkbox.addEventListener("change", renderData)
+
 function renderData(){
     containerList.innerHTML = products.map(templateList).join("")
 }
 
 function templateList(product){
+    let sort = document.querySelector("input[name='sort']:checked").value
+    console.log("ini hasil dari selector radio: ",sort)
+
     const stockClass = () => {
         if (product.stock === 0) {return "out-of-stock"}
         else if ( product.stock <= 5 ?? product.stock > 0) return "low-stock" 
         else return ""
     }
-
-    return `
+    
+    let html =`
         <article class="product" >
             <p class="product-id">${product.id}</p>
             <p class="product-name">${product.name}</p>
@@ -99,11 +111,25 @@ function templateList(product){
                 <button class="delete">Delete</button>
             </div>
         </article>`
+
+
+
+    if (sort === "out-of-stock") {
+        if (product.stock === 0){
+            return html
+        }else {return "";}
+    } else if (sort === "low-stock"){
+        if (product.stock <= 5){
+            return html
+        } else {return "";}
+    } else{
+        return html
+    }
 }
 // ----------------------------- Render Data end----------------------
 
 
-// ----------------------------- list event ----------------------
+// ----------------------------- event list ----------------------
 containerList.addEventListener("click",(e)=>{
     if (e.target.tagName !== "BUTTON") return
     let id = e.target.closest(".product-action").dataset.id
@@ -117,7 +143,7 @@ containerList.addEventListener("click",(e)=>{
 })
 
 
-// ----------------------------- list event end----------------------
+// ----------------------------- event list end----------------------
 
 
 
