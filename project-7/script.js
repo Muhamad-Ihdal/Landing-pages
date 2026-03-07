@@ -1,6 +1,7 @@
 let productNameInput = document.querySelector("#productNameInput")
 let stockInput = document.querySelector("#stockInput")
 let btnAddProduct = document.querySelector("#btnAddProduct")
+let containerList = document.querySelector("#containerList")
 let products;
 loadData()
 console.log(products)
@@ -73,6 +74,28 @@ function isIdExits(newId){
 
 
 // ----------------------------- Render Data ----------------------
+function renderData(){
+    containerList.innerHTML = products.map(templateList).join("")
+}
 
+function templateList(product){
+    const stockClass = () => {
+        if (product.stock === 0) return "out-of-stock"
+        else if (product.stock <= 5) return "low-stock" 
+        else return ""
+    }
+
+    return `
+        <article class="product ${stockClass}">
+            <p class="product-id">${product.id}</p>
+            <p class="product-name">${product.name}</p>
+            <p class="product-stock">${product.stock}</p>
+            <div class="product-action">
+                <button class="increase">+</button>
+                <button class="decrease" ${product.stock === 0 ? "disabled":""}>-</button>
+                <button class="delete">Delete</button>
+            </div>
+        </article>`
+}
 // ----------------------------- Render Data end----------------------
 

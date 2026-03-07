@@ -34,17 +34,17 @@
 
         <form class="sort">
             <article>
-                <input type="radio" name="sort" id="all" checked>
+                <input type="radio" value="all" name="sort" id="all" checked>
                 <label for="all">All</label>
             </article>
                 
             <article>
-                <input type="radio" name="sort" id="lowStock">
+                <input type="radio" value="low-stock" name="sort" id="lowStock">
                 <label for="lowStock">Low stock</label>
             </article>
 
             <article>
-                <input type="radio" name="sort" id="outOfStock">
+                <input type="radio" value="out-of-stock" name="sort" id="outOfStock">
                 <label for="outOfStock">Out of stock</label>
             </article>
         </form>
@@ -59,9 +59,9 @@
                 <p class="list-header-action">Action</p>
             </div>
 
-            <div class="container-list">
+            <div id="containerList" class="container-list">
             <!-- ------------------------ list product ---- -->
-                <article class="product">
+                <!-- <article class="product">
                     <p class="product-id">23</p>
                     <p class="product-name">Product Name</p>
                     <p class="product-stock">84</p>
@@ -70,7 +70,7 @@
                         <button class="decrease">-</button>
                         <button class="delete">Delete</button>
                     </div>
-                </article>
+                </article> -->
 
             <!-- ------------------------ list product end---- -->
             </div>
