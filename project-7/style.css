@@ -8,6 +8,7 @@
 .container{
     margin: auto;
     width: 60rem;
+    padding-bottom: 1rem;
     /* background-color: #f6f6f6; */
 
 }
@@ -15,12 +16,13 @@
 .header {
     background-color: #077bbf;
     color:white;
-    padding: 1rem;
+    padding: .8rem 6rem;
 
 }
-
+/* --------------------produck-list-area--------------------- */
 .produck-list-area{
     padding:1rem;
+    margin: 1rem auto;
 }
 
 .produck-list-area h2{
@@ -31,32 +33,30 @@
 
 /* -----------search */
 .search{
-    /* background-color: rgb(169, 255, 143); */
-    /* padding: 0 ; */
     display: flex;
     justify-content: start;
-    /* padding-right: 20rem ; */
     margin: .8rem 0;
 }
 
 .search-input{
     outline: none;
     border: none;
-    border-radius: 15px;
+    border-radius: 30px;
     height: 2.5rem;
-    padding: .8rem;
+    padding: .8rem 2rem;
     flex: 8;
     background-color: rgb(226, 226, 226);
 }
 .btn-search{
     height: 2.5rem;
-    border-radius: 15px;
+    border-radius: 30px;
     outline: none;
     border: none;
     flex: 1;
     background-color: #077bbf;
     color: white;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 
@@ -94,7 +94,7 @@
 /* ------------- list product */
 .container-list{
     /* height: 100rem; */
-    max-height: 20rem;
+    max-height: 30rem;
     overflow: auto;
     /* background-color: red; */
 }
@@ -127,10 +127,8 @@
     width: 2rem;
     margin: auto .1rem;
     background-color: rgb(213, 213, 213);
-
+    
 }
-
-
 
 .product-action .delete{
     width: 8rem;
@@ -138,3 +136,71 @@
     background-color: red;
     color: white;
 }
+
+/* -------------------- produck-list-area end --------------------- */
+
+
+
+
+
+
+/* -------------------- add-product area  --------------------- */
+.add-product-area{
+    padding: 1rem;
+    margin: 0 1rem;
+    background-color: rgb(235, 235, 235);
+    border-radius: 8px;
+}
+
+.add-product{
+    margin: 1rem 0;
+    /* background-color: rgb(244, 244, 244); */
+}
+.add-product article{
+    margin-bottom: .5rem;
+}
+.add-product input{
+    width: 30rem;
+    outline: none;
+    border: none;
+    background-color: rgb(255, 255, 255);
+    border-radius: 30px;
+    height: 2.5rem;
+    padding: .8rem 1.5rem;
+}
+.add-product button{
+    background-color: #077bbf;
+    font-weight: 600;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    padding: .5rem;
+    border-radius: 8px;
+    color:white;
+}
+.add-product label{
+    display: inline-block;
+    width: 7rem;
+}
+
+
+
+
+
+
+/* -------------------- add-product area end --------------------- */
+
+
+
+
+
+
+/* -------------------- footer  --------------------- */
+footer{
+
+    background-color: rgb(38, 34, 40);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+/* -------------------- footer end --------------------- */

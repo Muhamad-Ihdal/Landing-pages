@@ -7,3 +7,8 @@
 
 aset:
 - color: Biru abu-abu (#96C2DB, #E5EDF1), putih (#FFFFF)
+
+
+
+1. pisahin template, 
+2. pake .map()
