@@ -5,21 +5,26 @@ let containerList = document.querySelector("#containerList")
 let listTitle = document.querySelector("#listTitle")
 let searchInput = document.querySelector("#searchInput")
 let btnSearch = document.querySelector("#btnSearch")
-let products;
+let checkbox = document.querySelector("#sort")
+let state;
 loadData()
 renderData()
 
 // ----------------------------- local storage ----------------------
 function saveData(){
-    localStorage.setItem("products",JSON.stringify(products))
+    localStorage.setItem("state",JSON.stringify(state))
 }
 
 function loadData(){
-    let data = localStorage.getItem("products")
+    let data = localStorage.getItem("state")
     if (data) {
-        products = JSON.parse(data)
+        state = JSON.parse(data)
     } else {
-        products = []
+        state = {
+            products: [],
+            filter:"all",
+            search:""
+        }
     }
 }
 // ----------------------------- local storage end----------------------
@@ -34,8 +39,8 @@ btnAddProduct.addEventListener("click",(e)=>{
         alert("input must be a positive number")
         return
     }
-    
-    let same = products.find(p => p.name === productName)
+
+    let same = state.products.find(p => p.name === productName)
     if (same) {
         alert("product tersebut telah tersedia!")
         productNameInput.value = ""
@@ -49,11 +54,12 @@ btnAddProduct.addEventListener("click",(e)=>{
     } while (isIdExits(id))
         
         
-    products.push({
+    state.products.push({
         id:id,
         name:productName,
         stock:Number(stockInput.value)
     })
+    radioToDefault()
     renderData()
     saveData()
     
@@ -67,9 +73,9 @@ function generateId(){
 }
 
 function isIdExits(newId){
-    if (products.length === 0) {return false;}
+    if (state.products.length === 0) {return false;}
     
-    let duplicatId = products.find(d => d.id === newId)
+    let duplicatId = state.products.find(d => d.id === newId)
     
     if (duplicatId) {return true}
     else {return false}
@@ -80,17 +86,16 @@ function isIdExits(newId){
 
 
 // ----------------------------- Render Data ----------------------
-let checkbox = document.querySelector("#sort")
 checkbox.addEventListener("change", ()=>{
-    filterProduct()
+    let sort = document.querySelector("input[name='sort']:checked").value;
+    state.filter = sort
+    randerAndFilterProduct()
 })
 
 btnSearch.addEventListener("click",(e)=>{
     e.preventDefault();
-    filterProduct(true)
+    randerAndFilterProduct(true)
 })
-
-
 
 function renderData(filter = undefined){
     searchInput.value = ""
@@ -98,7 +103,7 @@ function renderData(filter = undefined){
     if (filter){
         containerList.innerHTML = filter.map(templateList).join("")
     }else {
-        containerList.innerHTML = products.map(templateList).join("")
+        containerList.innerHTML = state.products.map(templateList).join("")
     }
 }
 
@@ -126,29 +131,25 @@ function templateList(product){
 
 }
 
-function normalize(text){
-    return text.toLowerCase().replace(" ","")
-}
 
-
-function filterProduct(isSearch=false){
-    let sort = document.querySelector("input[name='sort']:checked").value
+function randerAndFilterProduct(isSearch=false){
+    
     let productFiltered;
     
     if (isSearch && searchInput.value.trim()){
-        document.querySelector("#all").checked = true;
-        let p = products.filter(p => normalize(p.name).includes(normalize(searchInput.value)) || normalize(p.id).includes(normalize(searchInput.value)))
+        radioToDefault()
+        let p = state.products.filter(p => normalize(p.name).includes(normalize(searchInput.value)) || normalize(p.id).includes(normalize(searchInput.value)))
         if (p) { containerList.innerHTML = p.map(templateList).join("")}
         else {containerList.innerHTML = ""}
         return  
     }
 
-    if (sort === "out-of-stock" ){
+    if (state.filter === "out-of-stock" ){
         listTitle.textContent = "Out of stock product"
-        productFiltered = products.filter(p => p.stock === 0 )
-    } else if (sort === "low-stock" ){
+        productFiltered = state.products.filter(p => p.stock === 0 )
+    } else if (state.filter === "low-stock" ){
         listTitle.textContent = "Low stock product"
-        productFiltered = products.filter(p =>  p.stock <= 5 && p.stock > 0 )
+        productFiltered = state.products.filter(p =>  p.stock <= 5 && p.stock > 0 )
     } else {
         listTitle.textContent = "All product"
         renderData()
@@ -179,24 +180,33 @@ containerList.addEventListener("click",(e)=>{
 
 // ----------------------------- tambahan ----------------------
 function deleteProduct(id){
-    products = products.filter(p => p.id !== id)
+    state.products = state.products.filter(p => p.id !== id)
     saveData()
     renderData()
 }
 
 function increaseStock(id){
-    let product = products.find(p => p.id === id)
+    let product = state.products.find(p => p.id === id)
     product.stock++
     saveData()
-    filterProduct(true)
+    randerAndFilterProduct(true)
 }
 
 function decreaseStock(id){
-    let product = products.find(p => p.id === id)
+    let product = state.products.find(p => p.id === id)
     if (product.stock <= 0) return
     product.stock--;
     
     saveData()
-    filterProduct(true)
+    randerAndFilterProduct(true)
+}
+
+function normalize(text){
+    return text.toLowerCase().replace(" ","")
+}
+
+function radioToDefault(){
+    document.querySelector("#all").checked = true;
+    state.filter = "all";
 }
 // ----------------------------- tambahan end----------------------
