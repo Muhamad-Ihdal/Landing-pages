@@ -8,7 +8,8 @@ let btnSearch = document.querySelector("#btnSearch")
 let checkbox = document.querySelector("#sort")
 let state;
 loadData()
-renderData()
+renderAndFilterProduct()
+
 
 // ----------------------------- local storage ----------------------
 function saveData(){
@@ -60,7 +61,7 @@ btnAddProduct.addEventListener("click",(e)=>{
         stock:Number(stockInput.value)
     })
     radioToDefault()
-    renderData()
+    renderAndFilterProduct()
     saveData()
     
     productNameInput.value = ""
@@ -89,16 +90,17 @@ function isIdExits(newId){
 checkbox.addEventListener("change", ()=>{
     let sort = document.querySelector("input[name='sort']:checked").value;
     state.filter = sort
-    randerAndFilterProduct()
+    renderAndFilterProduct()
 })
 
 btnSearch.addEventListener("click",(e)=>{
     e.preventDefault();
-    randerAndFilterProduct(true)
+    state.search = normalize(searchInput.value)
+    renderAndFilterProduct(true)
 })
 
 function renderData(filter = undefined){
-    searchInput.value = ""
+    searchToDefault()
     
     if (filter){
         containerList.innerHTML = filter.map(templateList).join("")
@@ -132,16 +134,16 @@ function templateList(product){
 }
 
 
-function randerAndFilterProduct(isSearch=false){
+function renderAndFilterProduct(isSearch=false){
     
     let productFiltered;
     
-    if (isSearch && searchInput.value.trim()){
+    if (isSearch && normalize(state.search)){
         radioToDefault()
-        let p = state.products.filter(p => normalize(p.name).includes(normalize(searchInput.value)) || normalize(p.id).includes(normalize(searchInput.value)))
+        let p = state.products.filter(p => normalize(p.name).includes(normalize(state.search)) || normalize(p.id).includes(normalize(state.search)))
         if (p) { containerList.innerHTML = p.map(templateList).join("")}
         else {containerList.innerHTML = ""}
-        return  
+        return 
     }
 
     if (state.filter === "out-of-stock" ){
@@ -182,14 +184,14 @@ containerList.addEventListener("click",(e)=>{
 function deleteProduct(id){
     state.products = state.products.filter(p => p.id !== id)
     saveData()
-    renderData()
+    renderAndFilterProduct()
 }
 
 function increaseStock(id){
     let product = state.products.find(p => p.id === id)
     product.stock++
     saveData()
-    randerAndFilterProduct(true)
+    renderAndFilterProduct(true)
 }
 
 function decreaseStock(id){
@@ -198,7 +200,7 @@ function decreaseStock(id){
     product.stock--;
     
     saveData()
-    randerAndFilterProduct(true)
+    renderAndFilterProduct(true)
 }
 
 function normalize(text){
@@ -208,5 +210,13 @@ function normalize(text){
 function radioToDefault(){
     document.querySelector("#all").checked = true;
     state.filter = "all";
+}
+function searchToDefault(){
+    state.search = ""
+    searchInput.value = "" ;
+}
+
+function getProductById(id){
+    return state.products.find(p => p.id === id)
 }
 // ----------------------------- tambahan end----------------------
