@@ -2,6 +2,9 @@ let productNameInput = document.querySelector("#productNameInput")
 let stockInput = document.querySelector("#stockInput")
 let btnAddProduct = document.querySelector("#btnAddProduct")
 let containerList = document.querySelector("#containerList")
+let listTitle = document.querySelector("#listTitle")
+let searchInput = document.querySelector("#searchInput")
+let btnSearch = document.querySelector("#btnSearch")
 let products;
 loadData()
 renderData()
@@ -73,7 +76,7 @@ function isIdExits(newId){
     
     let duplicatId = products.find(d => d.id === newId)
     
-    if (duplicatId) {alert("dupclicate ditemukan!!!");return true}
+    if (duplicatId) {return true}
     else {return false}
 }
 
@@ -84,11 +87,34 @@ function isIdExits(newId){
 
 // ----------------------------- Render Data ----------------------
 let checkbox = document.querySelector("#sort")
-checkbox.addEventListener("change", renderData)
+checkbox.addEventListener("change", ()=>{
+    console.log("change jalan??");
+    renderData();
+})
 
-function renderData(){
+btnSearch.addEventListener("click",(e)=>{
+    e.preventDefault();
+    renderData(true)
+})
+
+
+
+function renderData(isSearch = false){
+    console.log(isSearch)
+    if (isSearch && searchInput.value.trim()){
+        document.querySelector("#all").checked = true;
+        let p = products.find(p => p.name.replaceAll(' ', '') === searchInput.value.replaceAll(' ', '') || p.id === searchInput.value.replaceAll(' ', ''))
+        console.log(p)
+        if (p) { containerList.innerHTML = templateList(p)}
+        else {containerList.innerHTML = ""}
+        return  
+    }
+    searchInput.value = ""
     containerList.innerHTML = products.map(templateList).join("")
 }
+
+
+
 
 function templateList(product){
     let sort = document.querySelector("input[name='sort']:checked").value
@@ -98,29 +124,32 @@ function templateList(product){
         else if ( product.stock <= 5 && product.stock > 0) return "low-stock" 
         else return ""
     }
-
+    
     let html =`
-        <article class="product" >
-            <p class="product-id">${product.id}</p>
-            <p class="product-name">${product.name}</p>
-            <p class="product-stock ${stockClass()}">${product.stock}</p>
-            <div class="product-action" data-id="${product.id}">
-                <button class="increase">+</button>
-                <button class="decrease" ${product.stock === 0 ? "disabled":""}>-</button>
-                <button class="delete">Delete</button>
-            </div>
-        </article>`
+    <article class="product" >
+    <p class="product-id">${product.id}</p>
+    <p class="product-name">${product.name}</p>
+    <p class="product-stock ${stockClass()}">${product.stock}</p>
+    <div class="product-action" data-id="${product.id}">
+    <button class="increase">+</button>
+    <button class="decrease" ${product.stock === 0 ? "disabled":""}>-</button>
+    <button class="delete">Delete</button>
+    </div>
+    </article>`
 
 
     if (sort !== "all"){
         if (sort === "out-of-stock" && product.stock === 0){
+            listTitle.textContent = "Out of stock product"
             return html
         } else if (sort === "low-stock" && product.stock <= 5 && product.stock > 0){
+            listTitle.textContent = "Low stock product"
             return html
         } else {
             return ""
         }
     } else {
+        listTitle.textContent = "All product"
         return html
     }
 }
