@@ -88,36 +88,30 @@ function isIdExits(newId){
 // ----------------------------- Render Data ----------------------
 let checkbox = document.querySelector("#sort")
 checkbox.addEventListener("change", ()=>{
-    console.log("change jalan??");
-    renderData();
+    filterProduct()
 })
 
 btnSearch.addEventListener("click",(e)=>{
     e.preventDefault();
-    renderData(true)
+    filterProduct(true)
 })
 
 
 
-function renderData(isSearch = false){
-    console.log(isSearch)
-    if (isSearch && searchInput.value.trim()){
-        document.querySelector("#all").checked = true;
-        let p = products.find(p => p.name.replaceAll(' ', '') === searchInput.value.replaceAll(' ', '') || p.id === searchInput.value.replaceAll(' ', ''))
-        console.log(p)
-        if (p) { containerList.innerHTML = templateList(p)}
-        else {containerList.innerHTML = ""}
-        return  
-    }
+function renderData(filter = undefined){
     searchInput.value = ""
-    containerList.innerHTML = products.map(templateList).join("")
+    
+    if (filter){
+        containerList.innerHTML = filter.map(templateList).join("")
+    }else {
+        containerList.innerHTML = products.map(templateList).join("")
+    }
 }
 
 
 
 
 function templateList(product){
-    let sort = document.querySelector("input[name='sort']:checked").value
     
     const stockClass = () => {
         if (product.stock === 0) {return "out-of-stock"}
@@ -125,7 +119,7 @@ function templateList(product){
         else return ""
     }
     
-    let html =`
+    return`
     <article class="product" >
     <p class="product-id">${product.id}</p>
     <p class="product-name">${product.name}</p>
@@ -136,23 +130,38 @@ function templateList(product){
     <button class="delete">Delete</button>
     </div>
     </article>`
+    
+
+}
 
 
-    if (sort !== "all"){
-        if (sort === "out-of-stock" && product.stock === 0){
-            listTitle.textContent = "Out of stock product"
-            return html
-        } else if (sort === "low-stock" && product.stock <= 5 && product.stock > 0){
-            listTitle.textContent = "Low stock product"
-            return html
-        } else {
-            return ""
-        }
+function filterProduct(isSearch=false){
+    let sort = document.querySelector("input[name='sort']:checked").value
+    let productFiltered;
+    
+    if (isSearch && searchInput.value.trim()){
+        document.querySelector("#all").checked = true;
+        let p = products.find(p => p.name.replaceAll(' ', '') === searchInput.value.replaceAll(' ', '') || p.id === searchInput.value.replaceAll(' ', ''))
+        if (p) { containerList.innerHTML = templateList(p)}
+        else {containerList.innerHTML = ""}
+        return  
+    }
+
+    if (sort === "out-of-stock" ){
+        listTitle.textContent = "Out of stock product"
+        productFiltered = products.filter(p => p.stock === 0 )
+    } else if (sort === "low-stock" ){
+        listTitle.textContent = "Low stock product"
+        productFiltered = products.filter(p =>  p.stock <= 5 && p.stock > 0 )
     } else {
         listTitle.textContent = "All product"
-        return html
+        renderData()
     }
+
+    renderData(filter=productFiltered)
+
 }
+
 
 // ----------------------------- Render Data end----------------------
 
@@ -174,7 +183,6 @@ containerList.addEventListener("click",(e)=>{
 // ----------------------------- event list end----------------------
 
 
-
 // ----------------------------- tambahan ----------------------
 function deleteProduct(id){
     products = products.filter(p => p.id !== id)
@@ -186,7 +194,7 @@ function increaseStock(id){
     let product = products.find(p => p.id === id)
     product.stock++
     saveData()
-    renderData(true)
+    filterProduct(true)
 }
 
 function decreaseStock(id){
@@ -195,6 +203,6 @@ function decreaseStock(id){
     product.stock--;
     
     saveData()
-    renderData(true)
+    filterProduct(true)
 }
 // ----------------------------- tambahan end----------------------
