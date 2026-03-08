@@ -186,7 +186,7 @@ function increaseStock(id){
     let product = products.find(p => p.id === id)
     product.stock++
     saveData()
-    renderData()
+    renderData(true)
 }
 
 function decreaseStock(id){
@@ -195,6 +195,6 @@ function decreaseStock(id){
     product.stock--;
     
     saveData()
-    renderData()
+    renderData(true)
 }
 // ----------------------------- tambahan end----------------------
