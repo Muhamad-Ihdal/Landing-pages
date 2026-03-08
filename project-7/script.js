@@ -9,8 +9,6 @@ let products;
 loadData()
 renderData()
 
-
-
 // ----------------------------- local storage ----------------------
 function saveData(){
     localStorage.setItem("products",JSON.stringify(products))
@@ -26,17 +24,17 @@ function loadData(){
 }
 // ----------------------------- local storage end----------------------
 
-
-
 // ----------------------------- Add Product ----------------------
 btnAddProduct.addEventListener("click",(e)=>{
     e.preventDefault();
     let productName = productNameInput.value.trim()
     if (!productName) return
-    else if (!stockInput.value.trim() || isNaN(stockInput.value) || Number(stockInput.value) < 0) {
+    
+    if ( isNaN(stockInput.value) || Number(stockInput.value) < 0) {
         alert("input must be a positive number")
         return
     }
+    
     let same = products.find(p => p.name === productName)
     if (same) {
         alert("product tersebut telah tersedia!")
@@ -44,7 +42,6 @@ btnAddProduct.addEventListener("click",(e)=>{
         stockInput.value = ""
         return
     }  
-
     
     let id;
     do{
@@ -69,8 +66,6 @@ function generateId(){
     return Math.random().toString(36).substring(2, 8);
 }
 
-
-
 function isIdExits(newId){
     if (products.length === 0) {return false;}
     
@@ -82,7 +77,6 @@ function isIdExits(newId){
 
 
 // ----------------------------- Add Product end----------------------
-
 
 
 // ----------------------------- Render Data ----------------------
@@ -109,8 +103,6 @@ function renderData(filter = undefined){
 }
 
 
-
-
 function templateList(product){
     
     const stockClass = () => {
@@ -134,6 +126,10 @@ function templateList(product){
 
 }
 
+function normalize(text){
+    return text.toLowerCase().replace(" ","")
+}
+
 
 function filterProduct(isSearch=false){
     let sort = document.querySelector("input[name='sort']:checked").value
@@ -141,8 +137,8 @@ function filterProduct(isSearch=false){
     
     if (isSearch && searchInput.value.trim()){
         document.querySelector("#all").checked = true;
-        let p = products.find(p => p.name.replaceAll(' ', '') === searchInput.value.replaceAll(' ', '') || p.id === searchInput.value.replaceAll(' ', ''))
-        if (p) { containerList.innerHTML = templateList(p)}
+        let p = products.filter(p => normalize(p.name).includes(normalize(searchInput.value)) || normalize(p.id).includes(normalize(searchInput.value)))
+        if (p) { containerList.innerHTML = p.map(templateList).join("")}
         else {containerList.innerHTML = ""}
         return  
     }
@@ -158,11 +154,9 @@ function filterProduct(isSearch=false){
         renderData()
     }
 
-    renderData(filter=productFiltered)
+    renderData(productFiltered)
 
 }
-
-
 // ----------------------------- Render Data end----------------------
 
 
@@ -199,7 +193,7 @@ function increaseStock(id){
 
 function decreaseStock(id){
     let product = products.find(p => p.id === id)
-    if (!product.stock > 0) return
+    if (product.stock <= 0) return
     product.stock--;
     
     saveData()
