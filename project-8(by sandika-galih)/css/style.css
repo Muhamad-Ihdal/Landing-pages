@@ -80,10 +80,8 @@ body {
 
 /* --------------------- navbar end */
 
-
-
 /* --------------------- hero */
-.hero{
+.hero {
   min-height: 100vh;
   position: relative;
   display: flex;
@@ -93,62 +91,93 @@ body {
   background-size: cover;
   background-position: center;
 }
-.hero::after{
+.hero::after {
   position: absolute;
   content: "";
   display: block;
   width: 100%;
   height: 30%;
   bottom: 0;
-  background: linear-gradient(0deg,rgb(45, 26, 26) 8%,rgba(255, 255, 255, 0) 55%);
+  background: linear-gradient(
+    0deg,
+    rgb(45, 26, 26) 8%,
+    rgba(255, 255, 255, 0) 55%
+  );
 }
 
-.hero .content{
+.hero .content {
   padding: 1.4rem 7%;
   max-width: 40rem;
 }
 
-.hero .content h1{
+.hero .content h1 {
   font-size: 3.4rem;
   line-height: 1.2; /*ini baru nih */
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
-.hero .content h1 span{
+.hero .content h1 span {
   color: var(--primary);
-} 
+}
 
-.hero .content p{
+.hero .content p {
   font-size: 1.4rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   font-weight: 200;
   mix-blend-mode: difference; /*ini baru nih */
 }
 
-.hero .content .cta{
+.hero .content .cta {
   display: inline-block;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   padding: 1rem 2.5rem;
   color: white;
   background-color: var(--primary);
-  border-radius: .5rem;
-  font-weight: 700 ;
+  border-radius: 0.5rem;
+  font-weight: 700;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-
-
-
 /* --------------------- hero end */
 
+/* --------------------- about */
+.about {
+  padding: 6rem 7% 1rem;
+}
 
+.about h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.about h2 span {
+  color: var(--primary);
+}
 
+.about .row {
+  display: flex;
+}
 
-
-
-
-
-
+.about .about-img {
+  flex: 1 1 35rem; /*ini baru nih */
+}
+.about .about-img img {
+  width: 100%;
+}
+.about .content {
+  flex: 1 1 35rem; /*ini baru nih */
+  margin-left: 2rem;
+}
+.about .content h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+.about .content p {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+/* --------------------- about end */
 
 /* --------------------------------responsive media */
 /* ------- tablet */
@@ -159,30 +188,29 @@ body {
 
   .navbar-nav {
     position: absolute;
-    padding: .5rem 0;
+    padding: 0.5rem 0;
     /* display: flex; */
     background-color: #fff;
     top: 100%;
     right: -100%;
     width: 30rem;
     height: 100vh;
-    transition: .2s all;
+    transition: 0.2s all;
   }
   .navbar-nav.active {
     right: 0;
   }
 
-  .navbar-nav a::after{
+  .navbar-nav a::after {
     content: "";
     transform-origin: 0 0;
   }
-  .navbar-nav a:hover::after{
+  .navbar-nav a:hover::after {
     transform: scaleX(0.2);
   }
 
-
-  .navbar-nav a{
-    padding: .5rem 2rem;
+  .navbar-nav a {
+    padding: 0.5rem 2rem;
     display: block;
     color: black;
     font-size: 2rem;
@@ -191,9 +219,24 @@ body {
   #menu {
     display: inline-block;
   }
+
+  .about .row {
+    flex-wrap: wrap;
+  }
+  .about .content {
+    margin: 0;
+  }
+  .about .content h3{
+    margin-top: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .about .about-img img {
+    height: 24rem;
+    object-fit: cover;
+    object-position: center;
+  }
 }
-
-
 
 /* ------- handphone */
 @media (max-width: 450px) {
@@ -201,9 +244,3 @@ body {
     font-size: 55%;
   }
 }
-
-
-
-
-
-

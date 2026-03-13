@@ -20,55 +20,82 @@
     <!-- fontend -->
   </head>
 
-
-
   <body>
-    
     <!-- ----- nav bar ----- -->
     <nav class="navbar">
+      <a href="#" class="navbar-logo">Kenangan<span>senja</span></a>
 
-        <a href="#" class="navbar-logo">Kenangan<span>senja</span></a href="#">
+      <div class="navbar-nav" id="navbarNav">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-        <div class="navbar-nav" id="navbarNav">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#menu">Menu</a>
-            <a href="#contact">Contact</a>
-        </div>
-
-        <div class="navbar-icon">
-            <a href="#" id="search"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-            <a href="#" id="menu"><i data-feather="menu"></i></a>
-        </div>
-
+      <div class="navbar-icon">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="menu"><i data-feather="menu"></i></a>
+      </div>
     </nav>
     <!-- ----- nav bar end ----- -->
-    
-    
+
     <!-- ----- hero section  ----- -->
-     <section class="hero" id="home">
+    <section class="hero" id="home">
       <main class="content">
         <h1>Mari nikmati secangkir <span>kopi</span></h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium, aliquam.</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium,
+          aliquam.
+        </p>
         <a href="#" class="cta">Beli sekarang</a>
       </main>
-     </section>
+    </section>
     <!-- ----- hero section end ----- -->
-    
-
 
     <!-- ----- about section ----- -->
-     <section class="about" id="about">
+    <section class="about" id="about">
+      <h2><span>Tentang </span>kami</h2>
 
-     </section>
+      <div class="row">
+        <div class="about-img">
+          <img src="img/latte-art.jpg" alt="gambar kopi" />
+        </div>
+
+        <div class="content">
+          <h3>Kenapa memilih kopi kami?</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+            commodi, optio atque assumenda non sint dolor inventore aut tempore
+            exercitationem.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
+            commodi, optio atque assumenda non sint dolor inventore aut tempore
+            exercitationem.
+          </p>
+        </div>
+      </div>
+    </section>
     <!-- ----- about section end ----- -->
 
-
     <script>
-        feather.replace();
+      feather.replace();
     </script>
 
-    <script  src="js/script.js"></script>
+    <script src="js/script.js">
+      let menu = document.querySelector("#menu")
+      let navbarNav = document.querySelector("#navbarNav")
+
+      menu.addEventListener("click",()=>{
+          navbarNav.classList.toggle("active")
+      })
+
+      document.addEventListener("click",(e)=>{
+          if (!menu.contains(e.target) && !navbarNav.contains(e.target)){
+              navbarNav.classList.remove("active")
+          }
+      })
+    </script>
   </body>
 </html>
