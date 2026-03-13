@@ -8,7 +8,7 @@ menu.addEventListener("click",()=>{
 })
 
 document.addEventListener("click",(e)=>{
-    if (e.target !== menu && e.target.closest(".navbar-nav")){
-        
+    if (!menu.contains(e.target) && !navbarNav.contains(e.target)){
+        navbarNav.classList.remove("active")
     }
 })
