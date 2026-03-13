@@ -1,5 +1,5 @@
 :root {
-  --primary: #7b5b3a;
+  --primary: #a65e2e;
   --bg: #2c1a1a;
 }
 
@@ -17,3 +17,73 @@ body {
   background-color: var(--bg);
   color: #fff;
 }
+
+/* --------------------- navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 7%;
+  background-color: hsl(0, 26%, 14%, 0.8);
+  border-bottom: 1px solid var(--primary);
+  color: white;
+  z-index: 999;
+}
+
+.navbar * {
+  color: white;
+}
+
+.navbar-logo {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.navbar-logo span {
+  color: var(--primary);
+}
+
+.navbar-nav a {
+  display: inline-block;
+  margin: 0 0.4rem;
+}
+.navbar-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.1rem;
+  border-bottom: 2px solid var(--primary);
+  z-index: 0;
+  transform: scaleX(0);
+  transition: 0.2s linear;
+}
+.navbar-nav a:hover:after {
+  transform: scaleX(0.5);
+}
+
+.navbar-icon a {
+  display: inline-block;
+  margin: 0 0.4rem;
+}
+
+#menu {
+  display: none;
+}
+
+/* --------------------- navbar end */
+
+
+
+
+
+
+
+
+
+
+/* ------- tablet */
+
+
+
+
+
+/* ------- handphone */
+
