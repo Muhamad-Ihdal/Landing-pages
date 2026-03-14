@@ -352,6 +352,9 @@ body {
   .contact .row {
     flex-wrap: wrap;
   }
+  .contact .row .map{
+    height: 30rem;
+  }
 }
 
 /* ------- handphone */
