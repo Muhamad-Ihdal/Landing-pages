@@ -28,7 +28,7 @@
       <div class="navbar-nav" id="navbarNav">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#menu">Menu</a>
+        <a href="#menuSection">Menu</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -79,23 +79,122 @@
     </section>
     <!-- ----- about section end ----- -->
 
+    <!-- ----- menu section  ----- -->
+
+    <section id="menuSection" class="menu-section">
+      <h2><span>Menu </span>kami</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+        aliquid obcaecati officia aperiam accusantium consequatur.
+      </p>
+
+      <div class="row">
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+        <div class="menu-card">
+          <div class="image-frame">
+            <img src="img/milk-coffe.jpg" alt="Product kami" />
+          </div>
+          <h3 class="menu-card-title">- Espresso -</h3>
+          <p>IDR 15K</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ----- menu section end ----- -->
+
+    <!-- ----- contact section  ----- -->
+    <section class="contact" id="contact">
+      <h2><span>Kontak </span>kami</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt,
+        assumenda!
+      </p>
+      <div class="row">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15862.95064949233!2d106.86186264653328!3d-6.298163343116614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ed80b84ac47d%3A0x640561dd89719c88!2sUniversitas%20Indraprasta%20PGRI%20(UNINDRA)%2C%20Kampus%20B!5e0!3m2!1sid!2sid!4v1773447574390!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+
+        <form action="">
+          <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" placeholder="Masukan nama">
+          </div>
+          <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="text" placeholder="Gmail">
+          </div>
+          <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="text" placeholder="Nomor hp">
+          </div>
+
+          <button type="submit" class="btn">Kirim pesan</button>
+        </form>
+      </div>
+    </section>
+    <!-- ----- contact section end ----- -->
     <script>
       feather.replace();
     </script>
 
-    <script src="js/script.js">
-      let menu = document.querySelector("#menu")
-      let navbarNav = document.querySelector("#navbarNav")
+    <script>
+      console.log("ini jalan nggak sih");
+      let menu = document.querySelector("#menu");
+      let navbarNav = document.querySelector("#navbarNav");
 
-      menu.addEventListener("click",()=>{
-          navbarNav.classList.toggle("active")
-      })
+      menu.addEventListener("click", () => {
+        navbarNav.classList.toggle("active");
+      });
 
-      document.addEventListener("click",(e)=>{
-          if (!menu.contains(e.target) && !navbarNav.contains(e.target)){
-              navbarNav.classList.remove("active")
-          }
-      })
+      document.addEventListener("click", (e) => {
+        if (!menu.contains(e.target) && !navbarNav.contains(e.target)) {
+          navbarNav.classList.remove("active");
+        }
+      });
     </script>
   </body>
 </html>

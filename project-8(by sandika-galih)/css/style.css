@@ -16,7 +16,6 @@ body {
   font-family: "poppins", sans-serif;
   background-color: var(--bg);
   color: #fff;
-  min-height: 2000px;
 }
 
 /* --------------------- navbar */
@@ -106,8 +105,9 @@ body {
 }
 
 .hero .content {
-  padding: 1.4rem 7%;
-  max-width: 40rem;
+  /* background-color: #ffffff24; */
+  padding: 1.4rem 10%;
+  max-width: 50rem;
 }
 
 .hero .content h1 {
@@ -141,16 +141,22 @@ body {
 /* --------------------- hero end */
 
 /* --------------------- about */
-.about {
-  padding: 6rem 7% 1rem;
+.about,
+.menu-section,
+.contact {
+  padding: 6rem 7% 3rem;
 }
 
-.about h2 {
-  font-size: 2rem;
+.about h2,
+.menu-section h2,
+.contact h2 {
+  font-size: 2.5rem;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
-.about h2 span {
+.about h2 span,
+.menu-section h2 span,
+.contact h2 span {
   color: var(--primary);
 }
 
@@ -178,6 +184,97 @@ body {
   font-weight: 200;
 }
 /* --------------------- about end */
+
+/* --------------------- menu  */
+.menu-section h2,
+.contact h2 {
+  margin-bottom: 0.5rem;
+}
+
+.menu-section p,
+.contact p {
+  margin: auto;
+  text-align: center;
+  max-width: 40rem;
+  line-height: 1.4;
+  font-weight: 200;
+}
+
+.menu-section .row {
+  padding: 6rem 7% 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.menu-section .menu-card {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.menu-section .image-frame {
+  margin: auto;
+  width: 15rem;
+  height: 15rem;
+  margin-bottom: 1rem;
+  /* background-color: #a65e2e; */
+}
+.menu-section .image-frame img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* --------------------- menu end */
+
+/* --------------------- contanct  */
+.contact .row {
+  display: flex;
+  margin-top: 3rem;
+  background-color: #222;
+}
+.contact iframe {
+  flex: 1 1 30rem;
+  object-fit: cover;
+}
+.contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 5rem 0;
+  flex: 1 1 30rem;
+}
+
+.contact .input-group {
+  display: flex;
+  background-color: var(--bg);
+  border: 1px solid white;
+  width: 80%;
+  padding: 1.4rem;
+  border-radius: 0.5rem;
+}
+
+.contact .input-group input {
+  width: 100%;
+  margin-left: 1rem;
+  background: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.contact form .btn {
+  padding: 1rem 3rem;
+  background-color: var(--primary);
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+/* --------------------- contanct end */
 
 /* --------------------------------responsive media */
 /* ------- tablet */
@@ -220,21 +317,40 @@ body {
     display: inline-block;
   }
 
+  .about {
+    padding: 10rem 7% 1rem;
+  }
   .about .row {
     flex-wrap: wrap;
   }
   .about .content {
     margin: 0;
   }
-  .about .content h3{
+
+  .about .content h3 {
     margin-top: 1rem;
     font-size: 1.8rem;
+  }
+  .about .content p {
+    font-size: 1.5rem;
   }
 
   .about .about-img img {
     height: 24rem;
-    object-fit: cover;
+    object-fit: cover; /*ini baru nih */
     object-position: center;
+  }
+
+  .menu-section .row {
+    gap: 1rem;
+  }
+  .menu-section p,
+  .contact p {
+    font-size: 1.4rem;
+  }
+
+  .contact .row {
+    flex-wrap: wrap;
   }
 }
 
