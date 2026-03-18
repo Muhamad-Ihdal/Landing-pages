@@ -34,8 +34,10 @@
       </div>
 
       <div class="navbar-icon">
-        <a href="#" id="search"><i data-feather="search"></i></a>
-        <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="searchBtn"><i data-feather="search"></i></a>
+        <a href="#" id="shoppingCartBtn"
+          ><i data-feather="shopping-cart"></i
+        ></a>
         <a href="#" id="menu"><i data-feather="menu"></i></a>
       </div>
 
@@ -53,31 +55,11 @@
           <img style="width: 4rem" src="img/product1.jpg" alt="product-image" />
           <div class="product-content">
             <h3>Coffe bean 1</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-          </div>
-          <a href="#"><i data-feather="trash-2"></i></a>
-        </div>
-        <div class="item-in-cart" id="itemInCart">
-          <img style="width: 4rem" src="img/product1.jpg" alt="product-image" />
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-          </div>
-          <a href="#"><i data-feather="trash-2"></i></a>
-        </div>
-        <div class="item-in-cart" id="itemInCart">
-          <img style="width: 4rem" src="img/product1.jpg" alt="product-image" />
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-          </div>
-          <a href="#"><i data-feather="trash-2"></i></a>
-        </div>
-        <div class="item-in-cart" id="itemInCart">
-          <img style="width: 4rem" src="img/product1.jpg" alt="product-image" />
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+            <p class="harga-product">
+              Rp35.000<i class="simbol-perkallian" data-feather="x"></i
+              ><span>2</span>
+            </p>
+            <p class="total-harga">Total = Rp70.000</p>
           </div>
           <a href="#"><i data-feather="trash-2"></i></a>
         </div>
@@ -187,7 +169,6 @@
     </section>
 
     <!-- ----- menu section end ----- -->
-
     <!-- Product section  -->
     <section class="products" id="products">
       <h2><span>Produk </span>kami</h2>
@@ -195,71 +176,12 @@
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
         aliquid obcaecati officia aperiam accusantium consequatur.
       </p>
+
       <div class="row">
         <div class="product-card">
           <div class="card-action">
             <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#"><i data-feather="eye"></i></a>
-          </div>
-          <div class="product-image-frame">
-            <img src="img/product1.jpg" alt="gambar-produk" />
-          </div>
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <div class="stars">
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-            </div>
-            <p>IDR 45K<span>IDR 75K</span></p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="card-action">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#"><i data-feather="eye"></i></a>
-          </div>
-          <div class="product-image-frame">
-            <img src="img/product1.jpg" alt="gambar-produk" />
-          </div>
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <div class="stars">
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-              <i data-feather="star"></i>
-            </div>
-            <p>IDR 45K<span>IDR 75K</span></p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="card-action">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#"><i data-feather="eye"></i></a>
-          </div>
-          <div class="product-image-frame">
-            <img src="img/product1.jpg" alt="gambar-produk" />
-          </div>
-          <div class="product-content">
-            <h3>Coffe bean 1</h3>
-            <div class="stars">
-              <i data-feather="star" class="star-icon"></i>
-              <i data-feather="star" class="star-icon"></i>
-              <i data-feather="star" class="star-icon"></i>
-              <i data-feather="star" class="star-icon"></i>
-              <i data-feather="star" class="star-icon"></i>
-            </div>
-            <p>IDR 45K<span>IDR 75K</span></p>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="card-action">
-            <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#"><i data-feather="eye"></i></a>
+            <a href="#" id="detailBtn"><i data-feather="eye"></i></a>
           </div>
           <div class="product-image-frame">
             <img src="img/product1.jpg" alt="gambar-produk" />
@@ -336,6 +258,42 @@
       </div>
     </footer>
     <!-- ----- footer end ----- -->
+
+    <!-- ----- modal  ----- -->
+    <div class="modal" id="modal">
+      <div class="modal-container">
+        <a href="#" class="close-btn" id="closeBtn"><i data-feather="x"></i></a>
+        <div class="image-frame">
+          <img
+            style="width: 100%; border-radius: 0.5rem"
+            src="img/product1.jpg"
+            alt="product-image"
+          />
+        </div>
+        <div class="product-content">
+          <h3>Coffe bean 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+            voluptatibus earum omnis consequatur molestiae assumenda expedita
+            voluptatibus earum omnis consequatur molestiae assumenda expedita
+            optio quis, similique quam cum dolore!
+          </p>
+          <div class="stars">
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+            <i data-feather="star"></i>
+          </div>
+          <p class="product-price">Rp45.000<span>Rp75.000</span></p>
+          <a href="#" class="atc"
+            ><i data-feather="shopping-cart"></i><span>Add to cart</span></a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- ----- modal end ----- -->
+
     <script>
       feather.replace();
     </script>
@@ -344,9 +302,16 @@
       console.log("ini jalan nggak sih");
       let menu = document.querySelector("#menu");
       let navbarNav = document.querySelector("#navbarNav");
-      let btnSearch = document.querySelector("#search");
+      let btnSearch = document.querySelector("#searchBtn");
       let searchForm = document.querySelector("#searchForm");
       let searchInput = document.querySelector("#searchInput");
+      let shoppingCartBtn = document.querySelector("#shoppingCartBtn");
+      let shoppingCartItems = document.querySelector("#shoppingCartItems");
+
+      shoppingCartBtn.addEventListener("click", (e) => {
+        e.preventDefault;
+        shoppingCartItems.classList.toggle("active");
+      });
 
       btnSearch.addEventListener("click", (e) => {
         e.preventDefault;
@@ -361,8 +326,32 @@
         if (!menu.contains(e.target) && !navbarNav.contains(e.target)) {
           navbarNav.classList.remove("active");
         }
+        if (
+          !shoppingCartBtn.contains(e.target) &&
+          !shoppingCartItems.contains(e.target)
+        ) {
+          shoppingCartItems.classList.remove("active");
+        }
         if (!btnSearch.contains(e.target) && !searchForm.contains(e.target))
           searchForm.classList.remove("active");
+      });
+
+      // modal box
+
+      let closeBtn = document.querySelector("#closeBtn");
+      let detailBtn = document.querySelector("#detailBtn");
+      console.log(detailBtn)
+      let modal = document.querySelector("#modal");
+
+      detailBtn.addEventListener("click", (e) => {
+        console.log("detail button jalan mennn")
+        e.preventDefault;
+        modal.classList.add("active");
+      });
+      closeBtn.addEventListener("click", (e) => {
+        console.log("close button jalan mennn")
+        e.preventDefault;
+        modal.classList.remove("active");
       });
     </script>
   </body>
