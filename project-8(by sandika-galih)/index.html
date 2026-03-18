@@ -181,7 +181,9 @@
         <div class="product-card">
           <div class="card-action">
             <a href="#"><i data-feather="shopping-cart"></i></a>
-            <a href="#" id="detailBtn"><i data-feather="eye"></i></a>
+            <a href="#" class="detail-btn" id="detailBtn"
+              ><i data-feather="eye"></i
+            ></a>
           </div>
           <div class="product-image-frame">
             <img src="img/product1.jpg" alt="gambar-produk" />
@@ -198,6 +200,95 @@
             <p>IDR 45K<span>IDR 75K</span></p>
           </div>
         </div>
+        <div class="product-card">
+          <div class="card-action">
+            <a href="#"><i data-feather="shopping-cart"></i></a>
+            <a href="#" class="detail-btn" id="detailBtn"
+              ><i data-feather="eye"></i
+            ></a>
+          </div>
+          <div class="product-image-frame">
+            <img src="img/product1.jpg" alt="gambar-produk" />
+          </div>
+          <div class="product-content">
+            <h3>Coffe bean 1</h3>
+            <div class="stars">
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <p>IDR 45K<span>IDR 75K</span></p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="card-action">
+            <a href="#"><i data-feather="shopping-cart"></i></a>
+            <a href="#" class="detail-btn" id="detailBtn"
+              ><i data-feather="eye"></i
+            ></a>
+          </div>
+          <div class="product-image-frame">
+            <img src="img/product1.jpg" alt="gambar-produk" />
+          </div>
+          <div class="product-content">
+            <h3>Coffe bean 1</h3>
+            <div class="stars">
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <p>IDR 45K<span>IDR 75K</span></p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="card-action">
+            <a href="#"><i data-feather="shopping-cart"></i></a>
+            <a href="#" class="detail-btn" id="detailBtn"
+              ><i data-feather="eye"></i
+            ></a>
+          </div>
+          <div class="product-image-frame">
+            <img src="img/product1.jpg" alt="gambar-produk" />
+          </div>
+          <div class="product-content">
+            <h3>Coffe bean 1</h3>
+            <div class="stars">
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <p>IDR 45K<span>IDR 75K</span></p>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="card-action">
+            <a href="#"><i data-feather="shopping-cart"></i></a>
+            <a href="#" class="detail-btn" id="detailBtn"
+              ><i data-feather="eye"></i
+            ></a>
+          </div>
+          <div class="product-image-frame">
+            <img src="img/product1.jpg" alt="gambar-produk" />
+          </div>
+          <div class="product-content">
+            <h3>Coffe bean 1</h3>
+            <div class="stars">
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+              <i data-feather="star"></i>
+            </div>
+            <p>IDR 45K<span>IDR 75K</span></p>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -339,17 +430,26 @@
       // modal box
 
       let closeBtn = document.querySelector("#closeBtn");
-      let detailBtn = document.querySelector("#detailBtn");
-      console.log(detailBtn)
+      let detailBtn = document.querySelectorAll(".detail-btn");
+      console.log(detailBtn);
       let modal = document.querySelector("#modal");
 
-      detailBtn.addEventListener("click", (e) => {
-        console.log("detail button jalan mennn")
-        e.preventDefault;
-        modal.classList.add("active");
+      detailBtn.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault;
+          const target = e.target.closest(".detail-btn")
+          if (target === btn) {
+            console.log("detail button jalan mennn");
+            if (!modal.classList.contains("active")) {
+              modal.classList.add("active");
+              return;
+            }
+          }
+        });
       });
+
       closeBtn.addEventListener("click", (e) => {
-        console.log("close button jalan mennn")
+        console.log("close button jalan mennn");
         e.preventDefault;
         modal.classList.remove("active");
       });
