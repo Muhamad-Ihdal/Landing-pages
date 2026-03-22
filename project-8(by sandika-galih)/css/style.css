@@ -326,11 +326,12 @@ body {
   margin: 3rem 0;
 }
 .products .product-card {
-  width: 20rem;
+  max-width: 30rem;
   border: 0.1rem solid var(--primary);
   border-radius: 0.6rem;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
+  flex: 1 1 20rem;
 }
 
 .products .card-action {

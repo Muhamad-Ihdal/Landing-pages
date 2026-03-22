@@ -400,12 +400,12 @@
       let shoppingCartItems = document.querySelector("#shoppingCartItems");
 
       shoppingCartBtn.addEventListener("click", (e) => {
-        e.preventDefault;
+        e.preventDefault();
         shoppingCartItems.classList.toggle("active");
       });
 
       btnSearch.addEventListener("click", (e) => {
-        e.preventDefault;
+        e.preventDefault();
         searchForm.classList.toggle("active");
         searchInput.focus();
       });
@@ -436,7 +436,7 @@
 
       detailBtn.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          e.preventDefault;
+          e.preventDefault();
           const target = e.target.closest(".detail-btn")
           if (target === btn) {
             console.log("detail button jalan mennn");
@@ -450,7 +450,7 @@
 
       closeBtn.addEventListener("click", (e) => {
         console.log("close button jalan mennn");
-        e.preventDefault;
+        e.preventDefault();
         modal.classList.remove("active");
       });
     </script>

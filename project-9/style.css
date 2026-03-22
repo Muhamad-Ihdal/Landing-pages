@@ -1,0 +1,171 @@
+:root {
+  --main: rgb(82, 82, 255);
+  --bg: rgb(231, 231, 231);
+}
+
+* {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "poppins", sans-serif;
+  height: 300rem;
+}
+
+/* navbar-------------- */
+
+.navbar {
+  color: white;
+  background-color: var(--main);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 10%;
+}
+
+.navbar .navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav a {
+  color: white;
+  margin: 0 1rem;
+}
+.navbar-nav a:hover {
+  color: #cbcbcb;
+}
+
+/* hero ---------------------- */
+.hero {
+  background-color: var(--bg);
+  padding: 0rem 10%;
+  font-size: 1.2rem;
+}
+.hero h2,
+.kategori h2,
+.pengeluaran h2 {
+  padding-top: 3rem;
+  text-align: center;
+  font-size: 2rem;
+}
+/* tambah kategori */
+.hero .tambah-kategori,
+.hero .tambah-pengeluaran {
+  padding: 3rem 0;
+}
+
+.hero .tambah-kategori h3,
+.hero .tambah-pengeluaran h3 {
+  margin-bottom: 2rem;
+  /* text-align: center; */
+}
+.hero .tambah-kategori div {
+  display: flex;
+  background-color: #ffffff;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+.tambah-kategori input {
+  flex: 6;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+}
+.tambah-kategori button {
+  flex: 1;
+  background-color: var(--main);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* tambah pengeluaran */
+.hero .container-input {
+  display: flex;
+  margin: 1.5rem 0;
+}
+.hero .container-input label {
+  display: flex;
+  flex: 3;
+  align-items: center;
+  background-color: var(--bg);
+}
+
+.hero .container-input input {
+  flex: 12;
+  overflow: hidden;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+.hero select {
+  width: 14rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* kategori --------------------- */
+.kategori {
+  padding: 0rem 10%;
+  padding-bottom: 4rem;
+}
+
+.kategori .kategori-header {
+  padding-top: 2rem;
+}
+.kategori .table-header {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.kategori ul {
+  border: 2px solid #b5b5b5;
+}
+.kategori li {
+  display: flex;
+  position: relative;
+  background-color: #ececec;
+  border-bottom: 2px solid #b5b5b5;
+}
+.kategori li:last-child {
+  border-bottom: none;
+}
+.kategori li p {
+  padding: 1rem;
+  border-right: 2px solid #b5b5b5;
+}
+.kategori .id-kategori {
+  flex: 2;
+  text-align: center;
+}
+.kategori .nama-kategori {
+  flex: 7;
+}
+.kategori .total-kategori {
+  flex: 7;
+}
+.kategori .rmv-btn{
+    position: absolute;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    border-radius: .4rem;
+    padding: .3rem;
+    top:.7rem;
+    right: 1rem;
+}
+
+
+/* kategori --------------------- */
