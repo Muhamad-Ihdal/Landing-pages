@@ -1,95 +1,169 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App keuangan</title>
+    <title>Money Management</title>
     <link rel="stylesheet" href="style.css" />
-
-    <!-- icon -->
     <script src="https://unpkg.com/feather-icons"></script>
-    <!-- icon end -->
-
-    <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-    <!-- fontend -->
   </head>
 
   <body>
     <header class="navbar">
-      <h1>Money Managment</h1>
+      <div class="navbar-logo">Money<span>Management</span></div>
       <nav class="navbar-nav">
-        <a href="#menu">Menu</a>
-        <a href="#kategori">Kategori</a>
-        <a href="#pengeluaran">Pengeluaran</a>
+        <a href="#hero">Input</a>
+        <a href="#summary">Kategori</a>
+        <a href="#transaksi">Transaksi</a>
       </nav>
     </header>
 
-    <!-- ----------------------- hero -----------------------  -->
-    <div class="hero" id="hero">
-      <h2>Halaman Input</h2>
-      <form class="tambah-kategori">
-        <h3>Tambah kategori baru</h3>
-        <div>
-          <input type="text" placeholder="Tambah kategori..." />
-          <button type="submit">Tambah</button>
-        </div>
-      </form>
+    <main class="main-container">
+      <!-- section form input -->
+      <section class="section hero" id="hero">
+        <h2 class="section-title">Halaman Input</h2>
 
-      <form class="tambah-pengeluaran">
-        <h3>Tambah pengeluaran</h3>
-        <div class="container-input">
-          <label for="inputNilaiPengeluaran">Nilai pengeluaran(Rp)</label>
-          <input
-            type="text"
-            class="input-niali-pengeluaran"
-            id="inputNilaiPengeluaran"
-            placeholder="Nilai pengeluaran..."
-          />
-        </div>
-        <div class="container-input">
-          <label for="PenjelasanPengeluaran">Catatan/Penjelasan</label>
-          <input
-            type="text"
-            class="penjelasan-pengeluaran"
-            id="PenjelasanPengeluaran"
-            placeholder="Catatan/Penjelasan pengeluaran..."
-          />
-        </div>
-        <label for="kategoriPengeluaran" class="label-select"
-          >Pilih kategori pengeluaran:</label
-        >
-        <select name="" id="kategoriPengeluaran" class="kategori-pengeluaran">
-          <option value="makanan">Makanan</option>
-          <option value="hiburan">Hiburan</option>
-          <option value="pendidikan">Pendidikan</option>
-        </select>
-      </form>
-    </div>
-    <!-- ----------------------- hero end -----------------------  -->
+        <div class="flex-input-wrapper">
+          <form class="card form-kategori">
+            <h3>Tambah Kategori</h3>
+            <div class="input-group">
+              <input type="text" placeholder="Nama kategori..." required />
+              <button type="submit" class="btn-primary">Tambah</button>
+            </div>
+          </form>
 
-    <!-- ----------------------- kategori  -----------------------  -->
-    <div class="kategori" id="kategori">
-      <h2>Kategori</h2>
-      
-      
-    </div>
-    <!-- ----------------------- kategori end -----------------------  -->
+          <form class="card form-pengeluaran">
+            <h3>Catat Pengeluaran</h3>
+            <div class="form-control">
+              <label>Nominal (Rp)</label>
+              <input type="number" placeholder="Contoh: 50000" required />
+            </div>
+            <div class="form-control">
+              <label>Catatan</label>
+              <input type="text" placeholder="Beli apa hari ini?" required />
+            </div>
+            <div class="form-control">
+              <label>Pilih Kategori</label>
+              <select>
+                <option value="makanan">Makanan</option>
+                <option value="hiburan">Hiburan</option>
+                <option value="pendidikan">Pendidikan</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-save">Simpan Transaksi</button>
+          </form>
+        </div>
+      </section>
+      <!-- section form input end -->
 
-    <!-- ----------------------- kategori end -----------------------  -->
-    <div class="pengeluaran" id="pengeluaran">
-      <h2>List pengeluaran</h2>
-    </div>
-    <!-- ----------------------- kategori end -----------------------  -->
+      <!-- section summary  -->
+      <section class="section summary" id="summary">
+        <h2 class="section-title">Total per kategori</h2>
+        <div class="card">
+          <table border="1" class="table table-summary table-whith-rmv">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Kategori</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>a4fa32</td>
+                <td>Makanan</td>
+                <td>Rp23.000</td>
+                <td>
+                  <a href="#"
+                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+                      >Hapus</i
+                    ></a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>423ds2</td>
+                <td>Hiburan</td>
+                <td>Rp80.000</td>
+                <td>
+                  <a href="#"
+                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+                      >Hapus</i
+                    ></a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>aeqw32</td>
+                <td>Pendidikan</td>
+                <td>Rp820.000</td>
+                <td>
+                  <a href="#"
+                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+                      >Hapus</i
+                    ></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- section Riwayat Transaksi  -->
+      <section class="section transaksi" id="transaksi">
+        <h2 class="section-title">Riwayat Transaksi</h2>
+        <div class="card">
+          <form class="filter-kategori">
+            <label for="filterKategori">Filter berdasarkan kategori:</label>
+            <select id="filterKategori">
+              <option value="all">All</option>
+              <option value="makanan">Makanan</option>
+              <option value="hiburan">Hiburan</option>
+              <option value="pendidikan">Pendidikan</option>
+            </select>
+          </form>
+
+          <table border="1" class="table table-transaksi table-whith-rmv">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th class="col-2">Catatan</th>
+                <th>Kategori</th>
+                <th>Nilai</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>a4fa32</td>
+                <td class="col-2">Beli nasi goreng</td>
+                <td>Makanan</td>
+                <td>Rp21.000</td>
+                <td>
+                  <a href="#"
+                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+                      >Hapus</i
+                    ></a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- section Riwayat Transaksi end -->
+    </main>
 
     <script>
       feather.replace();
     </script>
-    <script src="sctipt.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
