@@ -32,7 +32,7 @@ body {
   gap: 0.5rem;
 }
 
-.btn-primary {
+.save-kategori-btn {
   background: var(--main);
   color: white;
   padding: 0 1.5rem;
@@ -41,7 +41,7 @@ body {
   font-weight: 600;
 }
 
-.btn-save {
+.save-transaksi-btn {
   width: 100%;
   background: var(--main);
   color: white;
@@ -167,7 +167,7 @@ td {
   border: 1px solid #ddd;
   padding: 0.5rem 1rem;
   text-align: left;
-  /* word-wrap: break-word; */
+  word-wrap: break-word;
 }
 
 .table thead tr {
@@ -179,6 +179,7 @@ td {
 /* table summary */
 .table-whith-rmv a {
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
   background-color: red;
@@ -193,11 +194,11 @@ td {
 .table-whith-rmv th:nth-child(1),
 .table-whith-rmv td:nth-child(1) {
   text-align: center;
-  width: 8rem;
+  width: 15%;
 }
 .table-whith-rmv th:last-child,
 .table-whith-rmv td:last-child {
-  width: 6rem;
+  width: 12%;
 }
 
 /* ---------- transaksi */
@@ -205,7 +206,7 @@ td {
 /* table transaksi */
 .table-transaksi .col-2,
 .table-transaksi .col-2 {
-  width: 23rem;
+  width: 38%;
 }
 
 .transaksi .table-transaksi {

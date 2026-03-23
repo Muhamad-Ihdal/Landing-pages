@@ -32,8 +32,19 @@
           <form class="card form-kategori">
             <h3>Tambah Kategori</h3>
             <div class="input-group">
-              <input type="text" placeholder="Nama kategori..." required />
-              <button type="submit" class="btn-primary">Tambah</button>
+              <input
+                type="text"
+                placeholder="Nama kategori..."
+                id="inputKategori"
+                required
+              />
+              <button
+                type="submit"
+                class="save-kategori-btn"
+                id="saveKategoriBtn"
+              >
+                Tambah
+              </button>
             </div>
           </form>
 
@@ -41,21 +52,37 @@
             <h3>Catat Pengeluaran</h3>
             <div class="form-control">
               <label>Nominal (Rp)</label>
-              <input type="number" placeholder="Contoh: 50000" required />
+              <input
+                type="number"
+                placeholder="Contoh: 50000"
+                id="inputNilaiTransaksi"
+                required
+              />
             </div>
             <div class="form-control">
               <label>Catatan</label>
-              <input type="text" placeholder="Beli apa hari ini?" required />
+              <input
+                type="text"
+                placeholder="Beli apa hari ini?"
+                id="inputCatatan"
+                required
+              />
             </div>
             <div class="form-control">
               <label>Pilih Kategori</label>
-              <select>
+              <select id="selectCategori">
                 <option value="makanan">Makanan</option>
                 <option value="hiburan">Hiburan</option>
                 <option value="pendidikan">Pendidikan</option>
               </select>
             </div>
-            <button type="submit" class="btn-save">Simpan Transaksi</button>
+            <button
+              type="submit"
+              class="save-transaksi-btn"
+              id="saveTransaksiBtn"
+            >
+              Simpan Transaksi
+            </button>
           </form>
         </div>
       </section>
