@@ -67,6 +67,15 @@ a:hover {
   margin-bottom: 0.4rem;
   color: #555;
 }
+
+.empty {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  padding: 20px;
+}
+
+
 /* Navbar */
 .navbar {
   background-color: var(--main);
