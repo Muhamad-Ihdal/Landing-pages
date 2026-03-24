@@ -49,17 +49,18 @@ function generateId() {
 let inputKategori = document.querySelector("#inputKategori");
 let saveKategoriBtn = document.querySelector("#saveKategoriBtn");
 
-saveKategoriBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (!inputKategori.value.trim()) return;
-  addCategory(inputKategori.value);
-  inputKategori.value = "";
-});
+saveKategoriBtn.addEventListener("click", addCategory);
 
-function addCategory(categoryName) {
+function addCategory(e) {
+  e.preventDefault();
+  let categoryName = inputKategori.value;
+  if (!inputKategori.value.trim()) {
+    inputKategori.value = "";
+    return;
+  }
   const id = generateId();
 
-  let same = kategori.find((s) => s.name === categoryName);
+  let same = kategori.find((s) => s.name === inputKategori.value);
   if (same) {
     alert("kategori tersebut telah tersedia!");
     return;
@@ -69,32 +70,41 @@ function addCategory(categoryName) {
     id: id,
     name: categoryName,
   });
+
   console.log("berhasil di tambahkan");
   console.log(kategori);
   renderSelect();
   saveData();
+  inputKategori.value = "";
 }
 
 // input transaksi
 let inputNilaiTransaksi = document.querySelector("#inputNilaiTransaksi");
 let inputCatatan = document.querySelector("#inputCatatan");
-let selectCategori = document.querySelector("#selectCategori");
 let saveTransaksiBtn = document.querySelector("#saveTransaksiBtn");
 
-saveTransaksiBtn.addEventListener("click", (e) => {
+saveTransaksiBtn.addEventListener("click", addTransaction);
+
+function addTransaction(e) {
+  e.preventDefault();
   let nilaiTransaksi = inputNilaiTransaksi.value;
   let catatan = inputCatatan.value;
+  let currentCategory = selectCategory.value
+  const transactionid = generateId();
   if (!catatan.trim() || !nilaiTransaksi.trim()) {
     inputCatatan.value = "";
     return;
   }
 
-  console.log(
-    "data transaksi berhasil di simpan ",
-    `nilai: ${nilaiTransaksi}  catatan: ${catatan} kategori: ${selectCategori.value}`,
-  );
+  transaksi.main.push({
+    trId: transactionid,
+    note: catatan,
+    category: currentCategory,
+    value:nilaiTransaksi
+  });
+
   inputNilaiTransaksi.value = "";
-});
+}
 
 // ------------- form input End
 
@@ -102,7 +112,8 @@ saveTransaksiBtn.addEventListener("click", (e) => {
 
 function renderSelect() {
   selectCategory.innerHTML = kategori.map(templetSelect).join("");
-  selectFilterCategory.innerHTML = `<option value="all" >All</option>` + kategori.map(templetSelect).join("")
+  selectFilterCategory.innerHTML =
+    `<option value="all" >All</option>` + kategori.map(templetSelect).join("");
   console.log(kategori);
 }
 function templetSelect(isi) {
