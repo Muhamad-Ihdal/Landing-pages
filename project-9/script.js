@@ -1,5 +1,10 @@
 let kategori;
 let transaksi;
+let selectCategory = document.querySelector("#selectCategory");
+let selectFilterCategory = document.querySelector("#selectFilterCategory");
+
+loadData();
+renderSelect();
 
 // ------------- localStorage
 function saveData() {
@@ -8,20 +13,17 @@ function saveData() {
 }
 
 function loadData() {
-  let dataKategori = localStorage.getItem("dataKategori");
-  let dataTransaksi = localStorage.getItem("dataTransaksi");
+  let dataKategori = localStorage.getItem("kategori");
+  let dataTransaksi = localStorage.getItem("transaksi");
 
   if (dataKategori) {
-    kategori = JSON.parse(data);
+    kategori = JSON.parse(dataKategori);
   } else {
-    kategori = {
-        main:[],
-        daftarKategori:[]
-    };
+    kategori = [];
   }
 
   if (dataTransaksi) {
-    transaksi = JSON.parse(data);
+    transaksi = JSON.parse(dataTransaksi);
   } else {
     transaksi = {
       main: [],
@@ -35,21 +37,43 @@ function loadData() {
 function normalize(text) {
   return text.toLowerCase().replace(" ", "");
 }
+
+function generateId() {
+  return Math.random().toString(36).substring(2, 10);
+}
 // ------------- utils end
 
 // ------------- form input
 // input kategori
+
 let inputKategori = document.querySelector("#inputKategori");
 let saveKategoriBtn = document.querySelector("#saveKategoriBtn");
+
 saveKategoriBtn.addEventListener("click", (e) => {
-  if (!inputKategori.value.trim()) {
-    console.log("Kategori gagal di tambahkan");
+  e.preventDefault();
+  if (!inputKategori.value.trim()) return;
+  addCategory(inputKategori.value);
+  inputKategori.value = "";
+});
+
+function addCategory(categoryName) {
+  const id = generateId();
+
+  let same = kategori.find((s) => s.name === categoryName);
+  if (same) {
+    alert("kategori tersebut telah tersedia!");
     return;
   }
 
-  console.log("Kategori berhasil di tambahkan", `${inputKategori.value}`);
-  inputKategori.value = "";
-});
+  kategori.push({
+    id: id,
+    name: categoryName,
+  });
+  console.log("berhasil di tambahkan");
+  console.log(kategori);
+  renderSelect();
+  saveData();
+}
 
 // input transaksi
 let inputNilaiTransaksi = document.querySelector("#inputNilaiTransaksi");
@@ -73,3 +97,16 @@ saveTransaksiBtn.addEventListener("click", (e) => {
 });
 
 // ------------- form input End
+
+// ------------- render
+
+function renderSelect() {
+  selectCategory.innerHTML = kategori.map(templetSelect).join("");
+  selectFilterCategory.innerHTML = `<option value="all" >All</option>` + kategori.map(templetSelect).join("")
+  console.log(kategori);
+}
+function templetSelect(isi) {
+  return `<option value="${isi.name}" >${isi.name}</option>`;
+}
+
+// ------------- render End
