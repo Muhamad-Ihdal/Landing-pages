@@ -1,5 +1,5 @@
-let kategori;
-let transaksi;
+let categories;
+let transactions;
 let selectCategory = document.querySelector("#selectCategory");
 let selectFilterCategory = document.querySelector("#selectFilterCategory");
 
@@ -8,24 +8,24 @@ renderSelect();
 
 // ------------- localStorage
 function saveData() {
-  localStorage.setItem("kategori", JSON.stringify(kategori));
-  localStorage.setItem("transaksi", JSON.stringify(transaksi));
+  localStorage.setItem("categories", JSON.stringify(categories));
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 function loadData() {
-  let dataKategori = localStorage.getItem("kategori");
-  let dataTransaksi = localStorage.getItem("transaksi");
+  let categoryData = localStorage.getItem("categories");
+  let transactionData = localStorage.getItem("transactions");
 
-  if (dataKategori) {
-    kategori = JSON.parse(dataKategori);
+  if (categoryData) {
+    categories = JSON.parse(categoryData);
   } else {
-    kategori = [];
+    categories = [];
   }
 
-  if (dataTransaksi) {
-    transaksi = JSON.parse(dataTransaksi);
+  if (transactionData) {
+    transactions = JSON.parse(transactionData);
   } else {
-    transaksi = {
+    transactions = {
       main: [],
       filter: "",
     };
@@ -44,66 +44,71 @@ function generateId() {
 // ------------- utils end
 
 // ------------- form input
-// input kategori
+// input category
 
-let inputKategori = document.querySelector("#inputKategori");
-let saveKategoriBtn = document.querySelector("#saveKategoriBtn");
+let categoryInput = document.querySelector("#inputKategori");
+let saveCategoryBtn = document.querySelector("#saveKategoriBtn");
 
-saveKategoriBtn.addEventListener("click", addCategory);
+saveCategoryBtn.addEventListener("click", addCategory);
 
 function addCategory(e) {
   e.preventDefault();
-  let categoryName = inputKategori.value;
-  if (!inputKategori.value.trim()) {
-    inputKategori.value = "";
+  let categoryName = categoryInput.value;
+  if (!categoryInput.value.trim()) {
+    categoryInput.value = "";
     return;
   }
   const id = generateId();
 
-  let same = kategori.find((s) => s.name === inputKategori.value);
-  if (same) {
-    alert("kategori tersebut telah tersedia!");
+  let existingCategory = categories.find((s) => s.name === categoryInput.value);
+  if (existingCategory) {
+    alert("Category already exists!");
     return;
   }
 
-  kategori.push({
+  categories.push({
     id: id,
     name: categoryName,
   });
 
-  console.log("berhasil di tambahkan");
-  console.log(kategori);
+  console.log("Successfully added");
+  console.log(categories);
   renderSelect();
   saveData();
-  inputKategori.value = "";
+  categoryInput.value = "";
 }
 
-// input transaksi
-let inputNilaiTransaksi = document.querySelector("#inputNilaiTransaksi");
-let inputCatatan = document.querySelector("#inputCatatan");
-let saveTransaksiBtn = document.querySelector("#saveTransaksiBtn");
+// input transaction
+let transactionValueInput = document.querySelector("#inputNilaiTransaksi");
+let noteInput = document.querySelector("#inputCatatan");
+let saveTransactionBtn = document.querySelector("#saveTransaksiBtn");
 
-saveTransaksiBtn.addEventListener("click", addTransaction);
+saveTransactionBtn.addEventListener("click", addTransaction);
 
 function addTransaction(e) {
   e.preventDefault();
-  let nilaiTransaksi = inputNilaiTransaksi.value;
-  let catatan = inputCatatan.value;
-  let currentCategory = selectCategory.value
-  const transactionid = generateId();
-  if (!catatan.trim() || !nilaiTransaksi.trim()) {
-    inputCatatan.value = "";
+  let transactionValue = transactionValueInput.value;
+  let note = noteInput.value;
+  let currentCategory = selectCategory.value;
+  const transactionId = generateId();
+  
+  if (!note.trim() || !transactionValue.trim()) {
+    noteInput.value = "";
     return;
   }
 
-  transaksi.main.push({
-    trId: transactionid,
-    note: catatan,
+  transactions.main.push({
+    trId: transactionId,
+    note: note,
     category: currentCategory,
-    value:nilaiTransaksi
+    value: transactionValue
   });
 
-  inputNilaiTransaksi.value = "";
+  console.log("Transaction Successfully added");
+  console.log(transactions);
+  saveData()
+  transactionValueInput.value = "";
+  noteInput.value = "";
 }
 
 // ------------- form input End
@@ -111,13 +116,13 @@ function addTransaction(e) {
 // ------------- render
 
 function renderSelect() {
-  selectCategory.innerHTML = kategori.map(templetSelect).join("");
+  selectCategory.innerHTML = categories.map(selectTemplate).join("");
   selectFilterCategory.innerHTML =
-    `<option value="all" >All</option>` + kategori.map(templetSelect).join("");
-  console.log(kategori);
+    `<option value="all" >All</option>` + categories.map(selectTemplate).join("");
 }
-function templetSelect(isi) {
-  return `<option value="${isi.name}" >${isi.name}</option>`;
+
+function selectTemplate(item) {
+  return `<option value="${item.name}" >${item.name}</option>`;
 }
 
 // ------------- render End
