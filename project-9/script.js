@@ -17,7 +17,8 @@ function saveData() {
 }
 
 function filterDefault() {
-  transactions.filter = "";
+  transactions.filter = "all";
+  saveData();
 }
 
 function loadData() {
@@ -177,10 +178,12 @@ function categoriesTemplate(data) {
   </tr>`;
 }
 
+// render transactions
 function renderTransaction() {
   if (transactions.main.length === 0) {
     tbodyTransaction.innerHTML = `<tr><td colspan="5" class="empty">Transaction is empty</td></tr>`;
   } else {
+
     tbodyTransaction.innerHTML = transactions.main
       .map(transactionTemplate)
       .join("");
@@ -189,6 +192,12 @@ function renderTransaction() {
 }
 
 function transactionTemplate(tr) {
+  console.log(tr.category,' : ',transactions.filter)
+
+  if (tr.category !== transactions.filter && tr.categories !== "all") {
+    return ""
+  }
+
   return `
       <tr data-trid="${tr.trId}" data-ctid="${tr.categoryId}" >
       <td>${tr.trId}</td>
@@ -251,3 +260,13 @@ function removeTransaction({ trId = undefined, ctId = undefined }) {
   renderCategories();
 }
 // -------------------------------- remove end
+
+
+
+// -------------------------------- filter 
+selectFilterCategory.addEventListener("change",()=>{
+  console.log( selectFilterCategory.value)
+  transactions.filter = selectFilterCategory.value
+  saveData();
+})
+// -------------------------------- filter end
