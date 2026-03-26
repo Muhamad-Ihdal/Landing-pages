@@ -83,6 +83,7 @@ function addCategory(e) {
   categories.push({
     id: id,
     name: categoryName,
+    total: 0
   });
 
   console.log("Successfully added");
@@ -105,10 +106,9 @@ function addTransaction(e) {
   let transactionValue = transactionValueInput.value;
   let note = noteInput.value;
   let currentCategory = selectCategory.value;
-  const ctgr = categories.find((c) => c.name === currentCategory);
-  console.log(ctgr);
-  console.log(ctgr.id);
+  const ct = categories.find((c) => c.name === currentCategory);
   const transactionId = generateId();
+
   if (!currentCategory) {
     alert("category is not exist");
     return;
@@ -118,19 +118,21 @@ function addTransaction(e) {
     noteInput.value = "";
     return;
   }
-
+  ct.total = Number(ct.total) + Number(transactionValue
+)
   transactions.main.push({
     trId: transactionId,
-    categoryId: ctgr.id,
+    categoryId: ct.id,
     note: note,
     category: currentCategory,
     value: transactionValue,
   });
 
+
   console.log("Transaction Successfully added");
-  console.log(transactions);
-  console.log(categories);
   saveData();
+  renderTransaction();
+  renderCategories();
   transactionValueInput.value = "";
   noteInput.value = "";
 }
@@ -162,20 +164,12 @@ function renderCategories() {
   }
 }
 
-tbodyCategories.addEventListener("click", (e) => {
-  e.preventDefault();
-  if (e.target.closest("#rmvBtn")) {
-    let id = e.target.closest("tr").dataset.id;
-    removeCategory(id);
-  }
-});
-
 function categoriesTemplate(data) {
   return `
   <tr data-id="${data.id}" >
     <td>${data.id}</td>
     <td>${data.name}</td>
-    <td>Belum dibikin</td>
+    <td>Rp${data.total}</td>
     <td>
       <a href="#" id="rmvBtn"><i data-feather="trash" class="rmv-btn" >
       </i></a>
@@ -196,14 +190,14 @@ function renderTransaction() {
 
 function transactionTemplate(tr) {
   return `
-      <tr>
+      <tr data-trid="${tr.trId}" data-ctid="${tr.categoryId}" >
       <td>${tr.trId}</td>
       <td class="col-2">${tr.note}</td>
       <td>${tr.category}</td>
       <td>Rp${tr.value}</td>
       <td>
-        <a href="#"
-          ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+        <a href="#" id="rmvBtn"
+          ><i data-feather="trash" class="rmv-btn" 
             ></i
           ></a
         >
@@ -213,11 +207,47 @@ function transactionTemplate(tr) {
 // -------------------------------- render End
 
 // -------------------------------- remove
+
+// event remove category
+tbodyCategories.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.closest("#rmvBtn")) {
+    const id = e.target.closest("tr").dataset.id;
+    removeCategory(id);
+  }
+});
+
 function removeCategory(id) {
-  categories = categories.filter((c) => c.id !== id);
-  console.log(categories);
-  saveData();
+  const ctId = id;
+  categories = categories.filter((c) => c.id !== ctId);
+  removeTransaction({ ctId: ctId });
   renderCategoriesAndSelect();
 }
 
+// event remove transaction
+tbodyTransaction.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.closest("#rmvBtn")) {
+    const trId = e.target.closest("tr").dataset.trid;
+    const ctId = e.target.closest("tr").dataset.ctid;
+    removeTransaction({ trId: trId,ctId:ctId });
+  }
+});
+
+function removeTransaction({ trId = undefined, ctId = undefined }) {
+  if (ctId && !trId) {
+    transactions.main = transactions.main.filter(
+      (tr) => tr.categoryId !== ctId,
+    );
+  } else if (trId) {
+    const category = categories.find(ct => ct.id === ctId)
+    const transactionValue = transactions.main.find(tr => tr.trId === trId).value
+    category.total = Number(category.total) - Number(transactionValue) 
+
+    transactions.main = transactions.main.filter((tr) => tr.trId !== trId);
+  }
+  saveData();
+  renderTransaction();
+  renderCategories();
+}
 // -------------------------------- remove end
