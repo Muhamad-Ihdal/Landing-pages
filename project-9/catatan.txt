@@ -1,0 +1,5 @@
+yang belum: 
+
+- bikin akumulasi pada tabel kategori
+- hapus data transaksi jika kategorinya dihapus
+- bikin filter pada data transaksi

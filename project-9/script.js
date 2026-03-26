@@ -3,9 +3,11 @@ let transactions;
 let selectCategory = document.querySelector("#selectCategory");
 let selectFilterCategory = document.querySelector("#selectFilterCategory");
 let tbodyCategories = document.querySelector("#tbodyCategories");
+let tbodyTransaction = document.querySelector("#tbodyTransaction");
 
 loadData();
 renderCategoriesAndSelect();
+renderTransaction();
 feather.replace();
 
 // -------------------------------- localStorage
@@ -181,6 +183,33 @@ function categoriesTemplate(data) {
   </tr>`;
 }
 
+function renderTransaction() {
+  if (transactions.main.length === 0) {
+    tbodyTransaction.innerHTML = `<tr><td colspan="5" class="empty">Transaction is empty</td></tr>`;
+  } else {
+    tbodyTransaction.innerHTML = transactions.main
+      .map(transactionTemplate)
+      .join("");
+    feather.replace();
+  }
+}
+
+function transactionTemplate(tr) {
+  return `
+      <tr>
+      <td>${tr.trId}</td>
+      <td class="col-2">${tr.note}</td>
+      <td>${tr.category}</td>
+      <td>Rp${tr.value}</td>
+      <td>
+        <a href="#"
+          ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
+            ></i
+          ></a
+        >
+      </td>
+    </tr>`;
+}
 // -------------------------------- render End
 
 // -------------------------------- remove
@@ -190,4 +219,5 @@ function removeCategory(id) {
   saveData();
   renderCategoriesAndSelect();
 }
+
 // -------------------------------- remove end
