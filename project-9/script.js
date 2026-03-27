@@ -57,18 +57,28 @@ function generateId() {
   return Math.random().toString(36).substring(2, 8);
 }
 
-function sumTotal() {
-  categories.map(pp);
+// function sumTotal() {
+//   categories.map(count);
+// }
+
+// function count(ct) {
+//   ct.total = transactions.main
+//     .filter((tr) => tr.category === ct.name)
+//     .map((k) => Number(k.value))
+//     .reduce((total, n) => {
+//       return total + n;
+//     }, 0);
+// }
+
+function countOnTheFly(ctId) {
+  return transactions.main
+    .filter((tr) => tr.categoryId === ctId)
+    .map((f) => Number(f.value))
+    .reduce((total, n) => {
+      return total + n;
+    }, 0);
 }
 
-function pp(ct) {
-  let kumpulinTotal = transactions.main
-    .filter((tr) => tr.category === ct.name)
-    .map((k) => Number(k.value));
-  ct.total = kumpulinTotal.reduce((total, n) => {
-    return total + n;
-  }, 0);
-}
 // -------------------------------- utils end
 
 // -------------------------------- form input
@@ -97,7 +107,7 @@ function addCategory(e) {
   categories.push({
     id: id,
     name: categoryName,
-    total: 0,
+    // total: 0,
   });
 
   console.log("Successfully added");
@@ -140,8 +150,8 @@ function addTransaction(e) {
     category: currentCategory,
     value: transactionValue,
   });
-  sumTotal();
-  
+  // sumTotal();
+
   console.log("Transaction Successfully added");
   saveData();
   renderTransaction();
@@ -178,11 +188,12 @@ function renderCategories() {
 }
 
 function categoriesTemplate(data) {
+  let total = countOnTheFly(data.id);
   return `
   <tr data-id="${data.id}" >
     <td>${data.id}</td>
     <td>${data.name}</td>
-    <td>Rp${data.total}</td>
+    <td>Rp${total}</td>
     <td>
       <a href="#" id="rmvBtn"><i data-feather="trash" class="rmv-btn" >
       </i></a>
@@ -263,7 +274,7 @@ function removeTransaction({ trId = undefined, ctId = undefined }) {
       (tr) => tr.trId === trId,
     ).value;
     // category.total = Number(category.total) - Number(transactionValue);
-    sumTotal();
+    // sumTotal();
 
     transactions.main = transactions.main.filter((tr) => tr.trId !== trId);
   }
