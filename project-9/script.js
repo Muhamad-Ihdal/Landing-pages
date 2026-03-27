@@ -195,7 +195,7 @@ function categoriesTemplate(data) {
     <td>${data.name}</td>
     <td>Rp${total}</td>
     <td>
-      <a href="#" id="rmvBtn"><i data-feather="trash" class="rmv-btn" >
+      <a href="#" class="rmv-btn"><i data-feather="trash"  >
       </i></a>
     </td>
   </tr>`;
@@ -225,8 +225,8 @@ function transactionTemplate(tr) {
       <td>${tr.category}</td>
       <td>Rp${tr.value}</td>
       <td>
-        <a href="#" id="rmvBtn"
-          ><i data-feather="trash" class="rmv-btn" 
+        <a href="#" class="rmv-btn"
+          ><i data-feather="trash" 
             ></i
           ></a
         >
@@ -240,7 +240,7 @@ function transactionTemplate(tr) {
 // event remove category
 tbodyCategories.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.closest("#rmvBtn")) {
+  if (e.target.closest(".rmv-btn")) {
     const id = e.target.closest("tr").dataset.id;
     removeCategory(id);
   }
@@ -256,7 +256,7 @@ function removeCategory(id) {
 // event remove transaction
 tbodyTransaction.addEventListener("click", (e) => {
   e.preventDefault();
-  if (e.target.closest("#rmvBtn")) {
+  if (e.target.closest(".rmv-btn")) {
     const trId = e.target.closest("tr").dataset.trid;
     const ctId = e.target.closest("tr").dataset.ctid;
     removeTransaction({ trId: trId, ctId: ctId });
