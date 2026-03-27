@@ -129,11 +129,10 @@ function addTransaction(e) {
   e.preventDefault();
   let transactionValue = transactionValueInput.value;
   let note = noteInput.value;
-  let currentCategory = selectCategory.value;
-  const ct = categories.find((c) => c.name === currentCategory);
+  const ct = categories.find((c) => c.name === selectCategory.value);
   const transactionId = generateId();
 
-  if (!currentCategory) {
+  if (!ct) {
     alert("category is not exist");
     return;
   }
@@ -142,12 +141,11 @@ function addTransaction(e) {
     noteInput.value = "";
     return;
   }
-  console.log("ini di sini harusnya");
+
   transactions.main.push({
     trId: transactionId,
     categoryId: ct.id,
     note: note,
-    category: currentCategory,
     value: Number(transactionValue),
   });
   // sumTotal();
@@ -214,7 +212,9 @@ function renderTransaction() {
 }
 
 function transactionTemplate(tr) {
-  if (tr.category !== transactions.filter && transactions.filter !== "all") {
+  let category = categories.find(ct => ct.id === tr.categoryId ).name
+
+  if (category !== transactions.filter && transactions.filter !== "all") {
     return "";
   }
 
@@ -222,7 +222,7 @@ function transactionTemplate(tr) {
       <tr data-trid="${tr.trId}" data-ctid="${tr.categoryId}" >
       <td>${tr.trId}</td>
       <td class="col-2">${tr.note}</td>
-      <td>${tr.category}</td>
+      <td>${category}</td>
       <td>Rp${tr.value}</td>
       <td>
         <a href="#" class="rmv-btn"
