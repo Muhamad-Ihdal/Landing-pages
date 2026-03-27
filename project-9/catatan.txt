@@ -1,3 +1,0 @@
-yang belum: 
-
-- bikin akumulasi pada tabel kategori

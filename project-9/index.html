@@ -70,11 +70,7 @@
             </div>
             <div class="form-control">
               <label>Pilih Kategori</label>
-              <select id="selectCategory">
-                <option value="makanan">Makanan</option>
-                <option value="hiburan">Hiburan</option>
-                <option value="pendidikan">Pendidikan</option>
-              </select>
+              <select id="selectCategory"></select>
             </div>
             <button
               type="submit"
@@ -101,44 +97,7 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody id="tbodyCategories">
-              <tr>
-                <td>a4fa32</td>
-                <td>Makanan</td>
-                <td>Rp23.000</td>
-                <td>
-                  <a href="#"
-                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
-                      ></i
-                    ></a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>423ds2</td>
-                <td>Hiburan</td>
-                <td>Rp80.000</td>
-                <td>
-                  <a href="#"
-                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
-                      >Hapus</i
-                    ></a
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td>aeqw32</td>
-                <td>Pendidikan</td>
-                <td>Rp820.000</td>
-                <td>
-                  <a href="#"
-                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
-                      >Hapus</i
-                    ></a
-                  >
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="tbodyCategories"></tbody>
           </table>
         </div>
       </section>
@@ -149,15 +108,10 @@
         <div class="card">
           <form class="filter-kategori">
             <label for="filterKategori">Filter berdasarkan kategori:</label>
-            <select id="selectFilterCategory">
-              <option value="all">All</option>
-              <option value="makanan">Makanan</option>
-              <option value="hiburan">Hiburan</option>
-              <option value="pendidikan">Pendidikan</option>
-            </select>
+            <select id="selectFilterCategory"></select>
           </form>
 
-          <table  class="table table-transaksi table-whith-rmv">
+          <table class="table table-transaksi table-whith-rmv">
             <thead>
               <tr>
                 <th>ID</th>
@@ -167,27 +121,12 @@
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody id="tbodyTransaction" >
-              <tr>
-                <td>a4fa32</td>
-                <td class="col-2">Beli nasi goreng</td>
-                <td>Makanan</td>
-                <td>Rp21.000</td>
-                <td>
-                  <a href="#"
-                    ><i data-feather="trash" class="rmv-btn" id="rmvBtn"
-                      >Hapus</i
-                    ></a
-                  >
-                </td>
-              </tr>
-            </tbody>
+            <tbody id="tbodyTransaction"></tbody>
           </table>
         </div>
       </section>
       <!-- section Riwayat Transaksi end -->
     </main>
-
 
     <script src="script.js"></script>
   </body>
