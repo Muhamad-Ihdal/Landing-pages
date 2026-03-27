@@ -70,7 +70,7 @@ function generateId() {
 //     }, 0);
 // }
 
-function countOnTheFly(ctId) {
+function Summary(ctId) {
   return transactions.main
     .filter((tr) => tr.categoryId === ctId)
     .map((f) => Number(f.value))
@@ -148,7 +148,7 @@ function addTransaction(e) {
     categoryId: ct.id,
     note: note,
     category: currentCategory,
-    value: transactionValue,
+    value: Number(transactionValue),
   });
   // sumTotal();
 
@@ -188,7 +188,7 @@ function renderCategories() {
 }
 
 function categoriesTemplate(data) {
-  let total = countOnTheFly(data.id);
+  let total = Summary(data.id);
   return `
   <tr data-id="${data.id}" >
     <td>${data.id}</td>
