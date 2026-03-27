@@ -1,4 +1,3 @@
 yang belum: 
 
 - bikin akumulasi pada tabel kategori
-- bikin filter pada data transaksi

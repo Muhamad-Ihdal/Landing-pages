@@ -56,6 +56,19 @@ function normalize(text) {
 function generateId() {
   return Math.random().toString(36).substring(2, 8);
 }
+
+function sumTotal() {
+  categories.map(pp);
+}
+
+function pp(ct) {
+  let kumpulinTotal = transactions.main
+    .filter((tr) => tr.category === ct.name)
+    .map((k) => Number(k.value));
+  ct.total = kumpulinTotal.reduce((total, n) => {
+    return total + n;
+  }, 0);
+}
 // -------------------------------- utils end
 
 // -------------------------------- form input
@@ -84,7 +97,7 @@ function addCategory(e) {
   categories.push({
     id: id,
     name: categoryName,
-    total: 0
+    total: 0,
   });
 
   console.log("Successfully added");
@@ -119,8 +132,7 @@ function addTransaction(e) {
     noteInput.value = "";
     return;
   }
-  ct.total = Number(ct.total) + Number(transactionValue
-)
+  console.log("ini di sini harusnya");
   transactions.main.push({
     trId: transactionId,
     categoryId: ct.id,
@@ -128,8 +140,8 @@ function addTransaction(e) {
     category: currentCategory,
     value: transactionValue,
   });
-
-
+  sumTotal();
+  
   console.log("Transaction Successfully added");
   saveData();
   renderTransaction();
@@ -183,7 +195,6 @@ function renderTransaction() {
   if (transactions.main.length === 0) {
     tbodyTransaction.innerHTML = `<tr><td colspan="5" class="empty">Transaction is empty</td></tr>`;
   } else {
-
     tbodyTransaction.innerHTML = transactions.main
       .map(transactionTemplate)
       .join("");
@@ -192,10 +203,8 @@ function renderTransaction() {
 }
 
 function transactionTemplate(tr) {
-  console.log(tr.category,' : ',transactions.filter)
-
-  if (tr.category !== transactions.filter && tr.categories !== "all") {
-    return ""
+  if (tr.category !== transactions.filter && transactions.filter !== "all") {
+    return "";
   }
 
   return `
@@ -239,7 +248,7 @@ tbodyTransaction.addEventListener("click", (e) => {
   if (e.target.closest("#rmvBtn")) {
     const trId = e.target.closest("tr").dataset.trid;
     const ctId = e.target.closest("tr").dataset.ctid;
-    removeTransaction({ trId: trId,ctId:ctId });
+    removeTransaction({ trId: trId, ctId: ctId });
   }
 });
 
@@ -249,9 +258,12 @@ function removeTransaction({ trId = undefined, ctId = undefined }) {
       (tr) => tr.categoryId !== ctId,
     );
   } else if (trId) {
-    const category = categories.find(ct => ct.id === ctId)
-    const transactionValue = transactions.main.find(tr => tr.trId === trId).value
-    category.total = Number(category.total) - Number(transactionValue) 
+    const category = categories.find((ct) => ct.id === ctId);
+    const transactionValue = transactions.main.find(
+      (tr) => tr.trId === trId,
+    ).value;
+    // category.total = Number(category.total) - Number(transactionValue);
+    sumTotal();
 
     transactions.main = transactions.main.filter((tr) => tr.trId !== trId);
   }
@@ -261,12 +273,11 @@ function removeTransaction({ trId = undefined, ctId = undefined }) {
 }
 // -------------------------------- remove end
 
-
-
-// -------------------------------- filter 
-selectFilterCategory.addEventListener("change",()=>{
-  console.log( selectFilterCategory.value)
-  transactions.filter = selectFilterCategory.value
+// -------------------------------- filter
+selectFilterCategory.addEventListener("change", () => {
+  console.log(selectFilterCategory.value);
+  transactions.filter = selectFilterCategory.value;
+  renderTransaction();
   saveData();
-})
+});
 // -------------------------------- filter end
