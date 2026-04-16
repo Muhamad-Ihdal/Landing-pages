@@ -18,7 +18,8 @@ export default function TaskForm({ onAddTask }) {
     setCategory(e.target.value);
   }
   
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     if (title.trim() === "") {
       alert("Data gagal di tambahkan: Title harus di isi!!!");
       return;

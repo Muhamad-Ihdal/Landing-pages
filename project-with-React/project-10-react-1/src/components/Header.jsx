@@ -1,9 +1,13 @@
-export default function Header() {
+export default function Header({tasks}) {
+  const allTask = tasks.length
+  const taskDone = tasks.filter(t=> t.isDone === true).length
+  
+  
   return (
     <>
       <header>
         <h1>Task Manager App</h1>
-        <p>Task done: 3</p>
+        <p>Task done: {taskDone} ({(taskDone/allTask) * 100}%)</p>
       </header>
     </>
   );

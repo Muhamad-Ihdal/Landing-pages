@@ -1,8 +1,9 @@
-export default function TaskItem({ task }) {
+export default function TaskItem({ task, onDelete, onToggleDone }) {
   return (
     <div className="taskCard" key={task.id}>
       <div
         className={`status ${task.isDone ? "greenBackground" : "orangeBackground"}`}
+        onClick={()=> onToggleDone(task.id)}
       >
         {task.isDone ? "Done" : "Pending"}
       </div>
@@ -14,17 +15,17 @@ export default function TaskItem({ task }) {
           <p>Priority: {task.priority}</p>
           <p>Category: {task.category}</p>
         </div>
-        <Action done={task.isDone} />
+        <Action id={task.id} onDelete={onDelete} />
       </div>
     </div>
   );
 }
 
-function Action({ done }) {
+function Action({ id, onDelete }) {
   return (
     <>
       <div className="action">
-        <button className="deleteBtn redBackground">Delete</button>
+        <button className="deleteBtn redBackground" onClick={()=> onDelete(id)}>Delete</button>
 
       </div>
     </>
