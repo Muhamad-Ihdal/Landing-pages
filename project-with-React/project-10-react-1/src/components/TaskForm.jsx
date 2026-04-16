@@ -9,18 +9,20 @@ export default function TaskForm({ onAddTask }) {
   function handleRadio(e) {
     setPriority(e.target.value);
   }
+  
   function handleInputTask(e) {
     setTitle(e.target.value);
   }
+  
   function handleCategory(e) {
     setCategory(e.target.value);
   }
+  
   function handleSubmit() {
     if (title.trim() === "") {
       alert("Data gagal di tambahkan: Title harus di isi!!!");
       return;
     }
-
     onAddTask({
       id: generateId(),
       title,

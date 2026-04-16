@@ -80,7 +80,7 @@ export default function App() {
   const [tasks, setTasks] = useState(data);
 
   function handleAddTask(newTask) {
-
+    setTasks([...tasks,newTask])
   }
 
   return (
