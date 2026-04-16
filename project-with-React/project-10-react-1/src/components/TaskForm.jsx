@@ -1,5 +1,5 @@
 import { useState } from "react";
-import generateId from "./idGenerator";
+import { generateId } from "./utils";
 
 export default function TaskForm({ onAddTask }) {
   const [title, setTitle] = useState("");

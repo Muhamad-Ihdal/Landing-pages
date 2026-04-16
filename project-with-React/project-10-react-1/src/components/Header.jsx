@@ -7,7 +7,7 @@ export default function Header({tasks}) {
     <>
       <header>
         <h1>Task Manager App</h1>
-        <p>Task done: {taskDone} ({(taskDone/allTask) * 100}%)</p>
+        <p>Task done: {taskDone} ({Math.round((taskDone/allTask) * 100)}%)</p>
       </header>
     </>
   );

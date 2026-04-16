@@ -66,7 +66,7 @@ const data = [
 const defaultFilter = {
   search: "",
   filter: "all",
-  sort: "",
+  sort: "high",
 };
 
 export default function App() {
@@ -91,6 +91,7 @@ export default function App() {
   }
 
   function handleFilter(newFilter) {
+    console.log(newFilter)
     setFilter(newFilter)
   }
 
