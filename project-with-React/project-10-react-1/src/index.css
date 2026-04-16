@@ -1,3 +1,9 @@
+:root {
+  --abu: #e7e7e7;
+  --biru: #269ccc;
+  --biru-muda: #9ed2c5;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,10 +13,115 @@
   font-family: "Poppins", sans-serif;
 }
 
-header {
-  background-color: blueviolet;
+/* =====================Template======================= */
+.displayNone {
+  display: none;
 }
 
-form input {
-  border:1px solid black
+.redBackground {
+  color: white;
+  background-color: red;
 }
+.orangeBackground {
+  color: white;
+  background-color: orange;
+}
+.greenBackground {
+  color: white;
+  background-color: green;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+/* ======================Template End===================== */
+
+header {
+  padding: 1rem 7%;
+  background-color: #4e7dff;
+  text-align: center;
+  color: rgb(255, 255, 255);
+}
+
+.main {
+  padding: 0 7%;
+}
+
+
+
+
+/* ----------------------------- form start */
+.formInputTask {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  width: 30rem;
+
+  box-shadow: 4px 3px 13px -4px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 4px 3px 13px -4px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 4px 3px 13px -4px rgba(0, 0, 0, 0.46);
+}
+
+.taskTitle {
+  background-color: rgb(229, 229, 229);
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 20rem;
+  margin: 0.8rem 0;
+}
+
+.kategory {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 10rem;
+}
+
+.radioWraper {
+  margin: 0.8rem 0;
+}
+
+.radioWraper input {
+  margin-left: 0.6rem;
+  margin-right: 0.1rem;
+}
+
+.formInputTask button {
+  width: 100%;
+  background-color: #4e7dff;
+  color: #fff;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  padding: 0.8rem 0;
+  font-size: 1.2rem;
+}
+/* ----------------------------- form end */
+
+
+
+
+
+
+
+
+
+
+
+/* .taskContainer {
+  background-color: rgb(237, 237, 237);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.taskContainer .taskCard {
+  border-radius: 0.3rem;
+  flex: 1 1 18rem;
+  max-width: 22rem;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
+  -webkit-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
+  -moz-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
+} */
