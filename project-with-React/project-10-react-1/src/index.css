@@ -28,7 +28,7 @@
 }
 .greenBackground {
   color: white;
-  background-color: green;
+  background-color: rgb(1, 192, 1);
 }
 
 button:hover {
@@ -47,9 +47,6 @@ header {
 .main {
   padding: 0 7%;
 }
-
-
-
 
 /* ----------------------------- form start */
 .formInputTask {
@@ -99,29 +96,109 @@ header {
 }
 /* ----------------------------- form end */
 
+/* ----------------------------- filter start */
+.searchAndFilter {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.216);
+  padding-bottom: 1rem;
+}
+
+.searchInputContainer input {
+  width: 100%;
+  background: none;
+  background-color: rgb(228, 228, 228);
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  margin: 1rem 0;
+}
+
+.searchAndFilter select{
+  background-color: rgb(228, 228, 228);
+  border-radius: .5rem;
+  margin-left: .5rem ;
+  margin-right: 4rem;
+  width: 10rem;
+  padding: .5rem;
+}
+
+.radioSort{
+  margin-left: .6rem;
+}
+
+/* ----------------------------- filter end */
+/* ----------------------------- list container end */
+.taskListContainer {
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem 0;
+
+box-shadow: 4px 3px 18px -4px rgba(0,0,0,0.3);
+-webkit-box-shadow: 4px 3px 18px -4px rgba(0,0,0,0.3);
+-moz-box-shadow: 4px 3px 18px -4px rgba(0,0,0,0.3);}
+.taskListContainer h2{
+  font-size: 1.8rem;
+}
+
+/* ----------------------------- list container end */
 
 
 
-
-
-
-
-
-
-
-/* .taskContainer {
-  background-color: rgb(237, 237, 237);
+.taskContainer {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
 .taskContainer .taskCard {
+  position: relative;
+  padding: 1rem;
   border-radius: 0.3rem;
   flex: 1 1 18rem;
-  max-width: 22rem;
+  min-width: 15rem;
+  max-width: 20rem;
   background-color: #ffffff;
-  box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
-  -webkit-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
-  -moz-box-shadow: 5px 5px 5px -4px rgba(0, 0, 0, 0.32);
-} */
+box-shadow: 1px 2px 10px -1px rgba(0,0,0,0.46);
+-webkit-box-shadow: 1px 2px 10px -1px rgba(0,0,0,0.46);
+-moz-box-shadow: 1px 2px 10px -1px rgba(0,0,0,0.46);
+}
+
+.status {
+  display: inline-block;
+  padding: .3rem .6rem;
+  border-radius: .2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.taskContent{
+  padding: 2rem 0;
+  margin-bottom: 3rem;
+}
+
+
+.cardFooter{
+  position: absolute;
+  display: flex;
+  /* background-color: #9ed2c5; */
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+}
+
+.cardDescription{
+ flex: 1;
+ font-size: .9rem;
+ color: rgba(0, 0, 0, 0.713);
+}
+
+.action{
+  flex: 1;
+  justify-content: end;
+  display: flex;
+}
+.action button{
+  font-weight: 700;
+  border-radius: .5rem;
+  padding: 0 1rem;
+}
