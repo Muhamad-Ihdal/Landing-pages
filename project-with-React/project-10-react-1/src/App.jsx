@@ -7,58 +7,58 @@ const data = [
   {
     id: "232131a",
     title: "nyapu rumah dal a fdada dafa",
-    category: "Pribadi",
-    priority: "Low",
+    category: "pribadi",
+    priority: "low",
     isDone: false,
   },
 
   {
     id: "dskk232",
     title: "instal software",
-    category: "Kerjaan",
-    priority: "High",
+    category: "kerjaan",
+    priority: "high",
     isDone: true,
   },
   {
     id: "242saa",
     title: "Benerin printer",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
   {
     id: "2fafas",
     title: "Bersihin computer",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
   {
     id: "dfasdf3",
     title: "Benerin printer dan jua lagi main fadfadf sdfadf dafa",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
   {
     id: "24fsasss",
     title: "Benerin printer",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
   {
     id: "fsdf32",
     title: "Benerin printer",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
   {
     id: "24fdsfa",
     title: "Benerin printer",
-    category: "Kerjaan",
-    priority: "Medium",
+    category: "kerjaan",
+    priority: "medium",
     isDone: false,
   },
 ];
@@ -68,6 +68,8 @@ const defaultFilter = {
   filter: "all",
   sort: "high",
 };
+
+
 
 export default function App() {
   const [tasks, setTasks] = useState(data);
@@ -91,8 +93,8 @@ export default function App() {
   }
 
   function handleFilter(newFilter) {
-    console.log(newFilter)
     setFilter(newFilter)
+    console.log(newFilter)
   }
 
   return (
