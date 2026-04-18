@@ -5,10 +5,31 @@ import TaskList from "./components/TaskList";
 
 const data = [
   {
-    id: "232131a",
+    id: "2fs3w31a",
     title: "nyapu rumah dal a fdada dafa",
     category: "pribadi",
     priority: "low",
+    isDone: false,
+  },
+  {
+    id: "232dsadwq1a",
+    title: "nyapu rumah dal a fdada dafa",
+    category: "pribadi",
+    priority: "high",
+    isDone: false,
+  },
+  {
+    id: "2fdafasdx1a",
+    title: "nyapu rumah dal a fdada dafa",
+    category: "pribadi",
+    priority: "low",
+    isDone: false,
+  },
+  {
+    id: "2hdhgdhfva",
+    title: "nyapu rumah dal a fdada dafa",
+    category: "pribadi",
+    priority: "high",
     isDone: false,
   },
 

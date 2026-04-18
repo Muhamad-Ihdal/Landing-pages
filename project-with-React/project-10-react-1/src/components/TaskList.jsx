@@ -1,7 +1,6 @@
 import TaskItem from "./TaskItem";
 import TaskFilter from "./TaskFilter";
 import { normalize } from "./utils";
-import { Linter } from "eslint";
 
 
 export default function TaskList({ dataTasks, onDelete, onToggleDone , handleFilter, filter}) {
@@ -24,16 +23,12 @@ export default function TaskList({ dataTasks, onDelete, onToggleDone , handleFil
   console.log(filter.sort !== "")
   if (filter.sort !== "") {
     data = data.sort((a,b)=>{
-      const sort1 = normalize(a.priority)
-      const sort2 = normalize(b.priority)
+      const sort1 = a.priority.toLowerCase()
+      const sort2 = b.priority.toLowerCase()
 
       let hasilBobot;
       if (filter.sort === 'low') {
         hasilBobot = weight[sort1] - weight[sort2]
-      } else if (filter.sort === 'medium') {
-        const getMediumWeight = (x)=>(x === "medium" ? 4 : weight[x])
-        hasilBobot = getMediumWeight(sort2) - getMediumWeight(sort1)
-        
       } else {
         hasilBobot = weight[sort2] - weight[sort1]
       }
@@ -53,7 +48,7 @@ export default function TaskList({ dataTasks, onDelete, onToggleDone , handleFil
       <TaskFilter filter={filter} handleFilter={handleFilter}/>
       <div className="taskContainer">
         {data.map((t) => {
-          return <TaskItem task={t} onDelete={onDelete} onToggleDone={onToggleDone}/>;
+          return <TaskItem key={t.id} task={t} onDelete={onDelete} onToggleDone={onToggleDone} />;
         })}
       </div>
     </div>

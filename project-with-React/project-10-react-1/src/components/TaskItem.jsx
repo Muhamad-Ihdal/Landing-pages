@@ -1,9 +1,23 @@
 export default function TaskItem({ task, onDelete, onToggleDone }) {
+  
+  
+  let backgroundColor;
+  switch (task.priority) {
+    case "high":
+      backgroundColor = "redBackground";
+      break;
+    case "medium":
+      backgroundColor = "orangeBackground";
+      break;
+    default:
+      backgroundColor = "";
+  }
+
   return (
-    <div className="taskCard" key={task.id}>
+    <div className="taskCard" >
       <div
         className={`status ${task.isDone ? "greenBackground" : "orangeBackground"}`}
-        onClick={()=> onToggleDone(task.id)}
+        onClick={() => onToggleDone(task.id)}
       >
         {task.isDone ? "Done" : "Pending"}
       </div>
@@ -12,7 +26,9 @@ export default function TaskItem({ task, onDelete, onToggleDone }) {
 
       <div className="cardFooter">
         <div className="cardDescription">
-          <p>Priority: {task.priority}</p>
+          <p>
+            Priority: <span className={backgroundColor}>{task.priority}</span>
+          </p>
           <p>Category: {task.category}</p>
         </div>
         <Action id={task.id} onDelete={onDelete} />
@@ -25,8 +41,12 @@ function Action({ id, onDelete }) {
   return (
     <>
       <div className="action">
-        <button className="deleteBtn redBackground" onClick={()=> onDelete(id)}>Delete</button>
-
+        <button
+          className="deleteBtn redBackground"
+          onClick={() => onDelete(id)}
+        >
+          Delete
+        </button>
       </div>
     </>
   );

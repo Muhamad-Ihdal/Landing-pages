@@ -3,8 +3,8 @@ import { generateId } from "./utils";
 
 export default function TaskForm({ onAddTask }) {
   const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("Kerjaan");
-  const [priority, setPriority] = useState("Medium");
+  const [category, setCategory] = useState("kerjaan");
+  const [priority, setPriority] = useState("medium");
 
   function handleRadio(e) {
     setPriority(e.target.value);
@@ -27,14 +27,12 @@ export default function TaskForm({ onAddTask }) {
     onAddTask({
       id: generateId(),
       title,
-      category,
-      priority,
+      category, 
+      priority, 
       isDone: false,
     });
     setTitle("")
   }
-
-
 
   return (
     <>
@@ -61,39 +59,39 @@ export default function TaskForm({ onAddTask }) {
           value={category}
           onChange={handleCategory}
         >
-          <option value="Kerjaan">Kerjaan</option>
-          <option value="Pribadi">Pribadi</option>
-          <option value="Belajar">Belajar</option>
+          <option value="kerjaan">Kerjaan</option>
+          <option value="pribadi">Pribadi</option>
+          <option value="belajar">Belajar</option>
         </select>
 
         <div className="radioWraper">
           <label>Priority:</label>
           <input
-            checked={priority === "High"}
+            checked={priority === "high"}
             type="radio"
             name="Priority"
             id="high"
-            value="High"
+            value="high" 
             onChange={handleRadio}
           />
           <label htmlFor="high">High</label>
 
           <input
-            checked={priority === "Medium"}
+            checked={priority === "medium"}
             type="radio"
             name="Priority"
             id="medium"
-            value="Medium"
+            value="medium"
             onChange={handleRadio}
           />
           <label htmlFor="medium">Medium</label>
 
           <input
-            checked={priority === "Low"}
+            checked={priority === "low"}
             type="radio"
             name="Priority"
             id="low"
-            value="Low"
+            value="low"
             onChange={handleRadio}
           />
           <label htmlFor="low">Low</label>
