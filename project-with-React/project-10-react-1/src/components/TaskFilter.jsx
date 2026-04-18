@@ -23,6 +23,8 @@ export default function TaskFilter({filter,handleFilter}) {
       </select>
 
       <label className="labelSort">Sort:</label>
+      <input checked={filter.sort === ""} type="radio" name="sortPriority" id="inOrder" className="radioSort" onChange={handleRadioSort} value=""/>
+      <label htmlFor="inOrder">in order</label> 
       <input checked={filter.sort === "high"} type="radio" name="sortPriority" id="sortHigh" className="radioSort" onChange={handleRadioSort} value="high"/>
       <label htmlFor="sortHigh">High</label>
       <input checked={filter.sort === "low"} type="radio" name="sortPriority" id="sortLow" className="radioSort" onChange={handleRadioSort} value="low"/>
@@ -30,6 +32,3 @@ export default function TaskFilter({filter,handleFilter}) {
     </div>
   );
 }
-
-      {/* <input checked={filter.sort === "medium"} type="radio" name="sortPriority" id="sortMedium" className="radioSort" onChange={handleRadioSort} value="medium"/>
-      <label htmlFor="sortMedium">Medium</label> */}

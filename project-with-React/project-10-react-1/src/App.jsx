@@ -87,7 +87,7 @@ const data = [
 const defaultFilter = {
   search: "",
   filter: "all",
-  sort: "high",
+  sort: "",
 };
 
 

@@ -3,5 +3,5 @@ export function generateId() {
 }
 
 export function normalize(text) {
-  return text.trim().toLowerCase().replace(" ", "");
+  return text.trim().toLowerCase().replaceAll(" ", "");
 }

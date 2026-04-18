@@ -40,8 +40,6 @@ export default function TaskList({ dataTasks, onDelete, onToggleDone , handleFil
     })
   }
 
-
-
   return (
     <div className="taskListContainer">
       <h2 className="listHeader">Your Task</h2>
