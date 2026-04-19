@@ -5,7 +5,7 @@ export default function TransactionList({ transaction, onDelete }) {
         <h1>History transaction</h1>
         {transaction.map((tr) => {
           if (tr.isDeleted) return "";
-          return <TransactionCard tr={tr} onDelete={onDelete} />;
+          return <TransactionCard key={tr.id} tr={tr} onDelete={onDelete} />;
         })}
       </section>
     </>
