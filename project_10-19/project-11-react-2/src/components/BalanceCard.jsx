@@ -1,18 +1,30 @@
-export default function BalanceCard() {
+export default function BalanceCard({transaction}) {
+  const income = transaction.filter(tr=> tr.type === 'income').reduce((acumulator,currentValue)=>{
+    return currentValue.amount + acumulator;
+  },0)
+  console.log("income: ",income)
+  
+  const expense = transaction.filter(tr=> tr.type === 'expense').reduce((acumulator,currentValue)=>{
+    return currentValue.amount + acumulator;
+  },0)
+  console.log("expense: ",expense)
+  
+  const balance = income - expense;
+  console.log("balance: ",balance)
   return (
     <>
       <section className="balanceCardContainer">
         <h1>Dashboard</h1>
-        <p>Saldo Saat ini!</p>
-        <p>Rp2.300.000 (contoh)</p>
+        <p>Current balance!</p>
+        <p>Rp{balance} </p>
         <div className="incomeAndExpense">
           <article className="income">
             <p>Income</p>
-            <p>Rp2.300.000 (contoh)</p>
+            <p>Rp{income} </p>
           </article>
           <article className="expense">
             <p>Expense</p>
-            <p>Rp2.300.000 (contoh)</p>
+            <p>Rp{expense} </p>
           </article>
         </div>
       </section>

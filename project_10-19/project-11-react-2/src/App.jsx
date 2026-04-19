@@ -21,14 +21,24 @@ export default function App() {
     },
   ]);
 
-  function handleForm(newTransaction) {
-    setTransaction([...transaction,newTransaction]);
+  function handleAddTransaction(newTransaction) {
+    setTransaction([...transaction, newTransaction]);
   }
+
+  function handleDelete(id) {
+    setTransaction(
+      transaction.map((tr) => {
+        if (tr.id !== id) return tr;
+        return { ...tr, isDeleted: !tr.isDeleted };
+      }),
+    );
+  }
+
   return (
     <div className="container">
-      <BalanceCard/>
-      <TransactionForm/>
-      <TransactionList/>
+      <BalanceCard transaction={transaction}/>
+      <TransactionForm onAdd={handleAddTransaction} />
+      <TransactionList transaction={transaction} onDelete={handleDelete}/>
     </div>
   );
 }

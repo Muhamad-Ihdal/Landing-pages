@@ -1,17 +1,18 @@
-export default function TransactionList() {
+export default function TransactionList({ transaction, onDelete }) {
   return (
     <>
       <section className="trListContainer">
         <h1>History transaction</h1>
         {transaction.map((tr) => {
-          return;
+          if (tr.isDeleted) return "";
+          return <TransactionCard tr={tr} onDelete={onDelete} />;
         })}
       </section>
     </>
   );
 }
 
-function transactionCard() {
+function TransactionCard({ tr, onDelete }) {
   return (
     <>
       <article className="transactionCard">
@@ -36,7 +37,7 @@ function transactionCard() {
         <button
           className="deleteBtn"
           aria-label="Hapus transaksi"
-          onClick={handleForm}
+          onClick={() => onDelete(tr.id)}
         >
           &times;
         </button>
