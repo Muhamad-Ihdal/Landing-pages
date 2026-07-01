@@ -5,7 +5,7 @@ import BalanceCard from "./components/BalanceCard";
 
 export default function App() {
   const [transaction, setTransaction] = useState([
-    {
+    { 
       id: "TRX-dfdsa",
       type: "income",
       amount: 200000,

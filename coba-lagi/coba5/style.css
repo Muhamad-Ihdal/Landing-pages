@@ -1,0 +1,188 @@
+:root {
+  --biru: rgb(60, 69, 241);
+  --abu: rgb(60, 63, 68);
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+a,button {
+  cursor: pointer;
+}
+
+body {
+  background-color: grey;
+  font-family: "Poppins", sans-serif;
+}
+
+/* --------------------header */
+header {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 7%;
+  background-color: var(--biru);
+  color: white;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+header .logo img {
+  height: 2.5rem;
+  width: 2.5rem;
+  margin-right: 0.6rem;
+}
+
+header .account {
+  display: flex;
+  align-items: center;
+}
+header .account > * {
+  cursor: pointer;
+}
+
+header .account a {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.4rem;
+}
+
+header .account .login {
+  background-color: white;
+  color: black;
+}
+header .account .login:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: black;
+}
+header .account .sign-in:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+/* --------------------header end */
+
+/* --------------------main  */
+.main-container {
+  display: flex;
+  min-height: 90vh;
+}
+.main-container > * {
+  padding: 1rem 1.5rem;
+}
+
+/* sidebar */
+.main-container .sidebar {
+  background-color: var(--abu);
+  flex: 1 1 15%;
+  color: white;
+}
+.main-container .sidebar ul {
+  list-style-type: none;
+}
+.main-container .sidebar li {
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+.main-container .sidebar li:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.main-container .sidebar a {
+  color: white;
+}
+
+
+
+/* .content-area */
+.main-container .content-area {
+  background-color: white;
+  flex: 1 1 85%;
+}
+.main-container .content-title{
+  padding-bottom: .2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem ;
+}
+.main-container .product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap:1rem;
+}
+.main-container .card {
+  background-color: rgb(233, 233, 233);
+  overflow: hidden;
+  flex: 1 1 16rem;
+  max-width: 18rem;
+  border-radius: .5rem;
+}
+
+
+/* .main-container .card {
+  background-color: rgb(233, 233, 233);
+  overflow: hidden;
+  
+  flex: 1 1 16rem; 
+  
+  max-width: 18rem; 
+  
+  border-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+
+
+.main-container .image-wrapper {
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  border-radius: .5rem;
+}
+.main-container .product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+.main-container .product-information{
+  padding: 1rem;
+}
+.main-container .description{
+  padding:.3rem 0;
+  font-size: .9rem;
+  opacity: .7;
+}
+.main-container .buy-btn{
+  width: 100%;
+  color: white;
+  font-weight: 600;
+  padding: .8rem 0 ;
+  margin-top: .4rem;
+  background-color: var(--biru);
+  border-radius: .4rem;
+}
+.main-container .buy-btn:hover{
+  opacity: .8;
+}
+
+
+/* --------------------main end */
+/* --------------------footer  */
+footer {
+  background-color: black;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: white;
+
+}
+/* --------------------footer end */
