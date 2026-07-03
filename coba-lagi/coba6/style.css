@@ -1,0 +1,170 @@
+:root {
+  --hero: #1f2937;
+  --second: #3882f6;
+  --main: #f9faf8;
+  --bg: #e5e7eb;
+  --quotes:#1f2937;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* --------------header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  color: var(--main);
+  justify-content: space-between;
+  background-color: var(--hero);
+  padding: 0 7%;
+}
+header .logo {
+  font-size: 1.6rem;
+  padding: 1.5rem 0;
+}
+
+header nav {
+  display: flex;
+  align-items: center;
+  /* background-color: #040c1d; */
+}
+header ul {
+  display: flex;
+  list-style-type: none;
+  /* background-color: #3882f6; */
+}
+header li {
+  margin: 0 0.5rem;
+}
+header li a {
+  color: var(--bg);
+}
+header li a:hover {
+  opacity: 0.6;
+}
+/* --------------header end */
+
+/* --------------hero  */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 0 7%;
+  background-color: var(--hero);
+  color: white;
+  height: 80vh;
+}
+
+
+
+.hero .hero-description {
+  flex: 1;
+    padding-right:2rem ;
+}
+
+.hero .hero-description h2{
+    font-size: 3rem;
+}
+
+.hero .hero-description p{
+    margin: 2rem 0;
+}
+
+.hero .hero-description a{
+    color:var(--main);
+    font-weight: 600;
+    background-color: var(--second);
+    padding: 1rem 2rem;
+    border-radius: .6rem;
+}
+
+
+.hero .hero-img-wrapper {
+    overflow: hidden;
+    flex: 1;
+    border-radius: 0.5rem;
+    height: 20rem;
+}
+
+.hero .hero-img-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+/* --------------hero end */
+
+
+/* --------------information  */
+.information{
+    height: 60vh;  
+}
+.information h2{
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    padding: 3rem 0 4rem;
+}
+
+.information .wrapper{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+.information .wrapper article{
+    aspect-ratio: 1/1;
+    height: 12rem;
+    border-radius: .6rem;
+    overflow: hidden;
+}
+.information .wrapper img{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+/* --------------information end */
+/* --------------quotes  */
+.quotes{
+    background-color: var(--bg);
+    padding: 7rem 7%;
+}
+.quotes p{
+    font-style: italic;
+    font-weight: 100;
+    font-size: 2.2rem;
+    color: var(--quotes);
+    margin-bottom: 2rem;
+}
+
+.quotes h2{
+    font-size: 2rem;
+    text-align: end;
+}
+/* --------------quotes end */
+/* --------------call  */
+
+.call{
+  background-color: white;
+  padding: 4rem;
+}
+
+.call-information{
+background-color: var(--second);
+}
+
+
+
+/* --------------call end */
